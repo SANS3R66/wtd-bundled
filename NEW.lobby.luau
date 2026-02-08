@@ -1,36 +1,39 @@
 local a={cache={}}do do local function __modImpl()local b=game:GetService
 'Players'local c=game:GetService'BadgeService'local d=game:GetService
-'ReplicatedStorage'local e=b.LocalPlayer local f=(e.PlayerGui)local g=(d.
-AccessoryHandle)local h=(d.TeleportRemote)local i=(workspace.Map3.Lockpick.
-prompt)local j='1.18.1'local k=CFrame.new(297.053253,0.499999881,-335.234741,
-0.999997377,-1.9224634299999999E-8,-2.30112369E-3,1.91470146e-8,1,-3.37535155E-8
-,0.00230112369,3.3709366e-8,0.999997377)local l=CFrame.new(266.589569,0.49999994
-,-341.50174,0.66399318,3.8047499399999998e-8,-0.747738659,-6.74071288E-8,1,-
-8.97422314E-9,0.747738659,5.63617384e-8,0.66399318)local m={}function m.init()
-end function m.isSubwayBadgeOwned()return f.AwesomeGUI.Shop.Badges.Array:
-WaitForChild'3997104159229662':GetAttribute'Badge_Not_Owned'~=true end function
-m.isTrainFriendsBadgeOwned()return f.AwesomeGUI.Shop.Badges.Array:WaitForChild
-'890409060943147':GetAttribute'Badge_Not_Owned'~=true end function m.
-getLongWayHomeBadge()g:FireServer'Train'end function m.getEveryoneIsHereBadge()g
-:FireServer'Train 2'end function m.getTicketDialogue()workspace.Characters.
-Advice.RemoteEvent:FireServer'Object'end function m.getFakeTicket()e:
-SetAttribute('Trinket3','Ticket')end function m.getPowerGems()g:FireServer
-'Trinket_Gems'end function m.activateLockpick()local n=e.Character.
-HumanoidRootPart.CFrame Player.Character.HumanoidRootPart.CFrame=i.Parent.CFrame
-task.wait(0.3)fireproximityprompt(i)task.wait(0.3)Player.Character.
-HumanoidRootPart.CFrame=n end function m.toggleNoRewards()h:FireServer(
-'SetModifier',{'Rewards Disabled'})end local function isRodActive(n)return n.
-Handle.Main.RopeConstraint.Length>=3 end local n local o=false local p local q=
-false function m.toggleAutofishing()if q then return end q=true if not o then n:
-SetValue(false)local r=e.Character if r then local s=(r:FindFirstChild
-'Fishing Rod')if s then r.HumanoidRootPart.CFrame=k o=true n:SetValue(true)p=
-task.defer(function()task.wait(1)s.Script.Enabled=false while task.wait()do r.
-HumanoidRootPart.CFrame=k task.wait(0.5)if not isRodActive(s)then s:Activate()
-end s.RemoteEvent:FireServer(true)task.wait(2)end end)end end else if p then
-task.cancel(p)end end q=false end function m.setAutofishingToggler(r)n=r end
-function m.teleportToFishingRod()e.Character.HumanoidRootPart.CFrame=CFrame.new(
+'ReplicatedStorage'local e=b.LocalPlayer local f=(e.PlayerGui)local g=(d:
+FindFirstChild'FindFirstChild')local h=(d:FindFirstChild'TeleportRemote')local i
+=(d:FindFirstChild'UseCode')local j=workspace:FindFirstChild'Map3'local k=(j.
+Lockpick.prompt)local l='1.18.1'local m=CFrame.new(297.053253,0.499999881,-
+335.234741,0.999997377,-1.9224634299999999E-8,-2.30112369E-3,1.91470146e-8,1,-
+3.37535155E-8,0.00230112369,3.3709366e-8,0.999997377)local n=CFrame.new(
 266.589569,0.49999994,-341.50174,0.66399318,3.8047499399999998e-8,-0.747738659,-
-6.74071288E-8,1,-8.97422314E-9,0.747738659,5.63617384e-8,0.66399318)end return m
+6.74071288E-8,1,-8.97422314E-9,0.747738659,5.63617384e-8,0.66399318)local o={
+'CARDS','arduous_update','new code'}local p={}function p.init()end function p.
+isSubwayBadgeOwned()return f.AwesomeGUI.Shop.Badges.Array:WaitForChild
+'3997104159229662':GetAttribute'Badge_Not_Owned'~=true end function p.
+isTrainFriendsBadgeOwned()return f.AwesomeGUI.Shop.Badges.Array:WaitForChild
+'890409060943147':GetAttribute'Badge_Not_Owned'~=true end function p.
+getLongWayHomeBadge()g:FireServer'Train'end function p.getEveryoneIsHereBadge()g
+:FireServer'Train 2'end function p.getTicketDialogue()workspace.Characters.
+Advice.RemoteEvent:FireServer'Object'end function p.getFakeTicket()e:
+SetAttribute('Trinket3','Ticket')end function p.getPowerGems()g:FireServer
+'Trinket_Gems'end function p.activateLockpick()local q=e.Character.
+HumanoidRootPart.CFrame Player.Character.HumanoidRootPart.CFrame=k.Parent.CFrame
+task.wait(0.3)fireproximityprompt(k)task.wait(0.3)Player.Character.
+HumanoidRootPart.CFrame=q end function p.toggleNoRewards()h:FireServer(
+'SetModifier',{'Rewards Disabled'})end local function isRodActive(q)return q.
+Handle.Main.RopeConstraint.Length>=3 end local q local r=false local s local t=
+false function p.toggleAutofishing()if t then return end t=true if not r then q:
+SetValue(false)local u=e.Character if u then local v=(u:FindFirstChild
+'Fishing Rod')if v then u.HumanoidRootPart.CFrame=m r=true q:SetValue(true)s=
+task.defer(function()task.wait(1)v.Script.Enabled=false while task.wait()do u.
+HumanoidRootPart.CFrame=m task.wait(0.5)if not isRodActive(v)then v:Activate()
+end v.RemoteEvent:FireServer(true)task.wait(2)end end)end end else if s then
+task.cancel(s)end end t=false end function p.setAutofishingToggler(u)q=u end
+function p.teleportToFishingRod()e.Character.HumanoidRootPart.CFrame=CFrame.new(
+266.589569,0.49999994,-341.50174,0.66399318,3.8047499399999998e-8,-0.747738659,-
+6.74071288E-8,1,-8.97422314E-9,0.747738659,5.63617384e-8,0.66399318)end function
+p.activateEveryCode()for u,v in o do i:FireServer(v)task.wait(1)end end return p
 end function a.a()local b=a.cache.a if not b then b={c=__modImpl()}a.cache.a=b
 end return b.c end end do local function __modImpl()local b={}local c=false
 function b.isInterfaceLoaded()return c end function b.enableInterface()c=true
@@ -100,14 +103,27 @@ hookmetamethod(game,'__namecall',function(...)if getnamecallmethod()==
 'ReportInGoogleAnalytics'then m=true return else return n(...)end end)game:
 ReportInGoogleAnalytics'loser'hookmetamethod(game,'__namecall',n)i=m end return
 g end function a.e()local b=a.cache.e if not b then b={c=__modImpl()}a.cache.e=b
-end return b.c end end do local function __modImpl()local b={}local c=game:
-GetService'ReplicatedStorage'local d=game:GetService'Lighting'local e=game:
-GetService'Players'local f='Cannot_See'local g='Cannot_Inspect'local h='No_Info'
-local i=(workspace:FindFirstChild'BluTeamZombies')local j=(workspace:
-FindFirstChild'BluTeamUnits')local k=(c:FindFirstChild'AccessoryHandle')local l=
-false local function bypassInspect_impl(m,n)m:SetAttribute(n,nil)m:
-GetAttributeChangedSignal(n):Once(function()m:SetAttribute(n,nil)end)end
-function b.init()if not c:FindFirstChild'admin'then error
+end return b.c end end do local function __modImpl()local b=a.c()local c={}local
+d=false local e function c.record()if d then return b.error'Already recording.'
+end e=hookmetamethod(game,'__namecall',function(f,...)local g=getnamecallmethod(
+)if g=='FireServer'then local h={...}if h[1]=='lol'then print
+'detected placing unit!!!'end end return e(...)end)end function c.stop()if not d
+then return b.error'Not recording currently'end end function c.isRecording()
+return d end function c.ableToRecord()return end return c end function a.f()
+local b=a.cache.f if not b then b={c=__modImpl()}a.cache.f=b end return b.c end
+end do local function __modImpl()local b={}local c=Color3.fromRGB(0,230,0)local
+d=Color3.fromRGB(230,0,0)function b.bool2string(e)return e and'yes'or'no'end
+function b.bool2color(e)return e and c or d end function b.isSurvival()return
+game end return b end function a.g()local b=a.cache.g if not b then b={c=
+__modImpl()}a.cache.g=b end return b.c end end do local function __modImpl()
+local b={}local c=game:GetService'ReplicatedStorage'local d=game:GetService
+'Lighting'local e=game:GetService'Players'local f='Cannot_See'local g=
+'Cannot_Inspect'local h='No_Info'local i=(workspace:FindFirstChild
+'BluTeamZombies')local j=(workspace:FindFirstChild'BluTeamUnits')local k=(c:
+FindFirstChild'AccessoryHandle')local l=false local function bypassInspect_impl(
+m,n)m:SetAttribute(n,nil)m:GetAttributeChangedSignal(n):Once(function()m:
+SetAttribute(n,nil)end)end function b.init()if not c:FindFirstChild'admin'then
+error
 [[Couldn't find admin remote. Are you sure you executed in survival place?]]end
 j.ChildAdded:Connect(function(m)if l then bypassInspect_impl(m,h)
 bypassInspect_impl(m,f)bypassInspect_impl(m,g)end end)end function b.
@@ -115,95 +131,88 @@ toggleBypassInspect()if not l then l=true for m,n in j:GetChildren()do n:
 SetAttribute(h,nil)n:SetAttribute(f,nil)n:SetAttribute(g,nil)end else l=false
 end end function b.fullbright()d.OutdoorAmbient=Color3.fromRGB(255,255,255)d.
 Brightness=2 d.Ambient=Color3.fromRGB(255,255,255)end local function clean_text(
-m)local n=string.gsub(m,'\u{d7}','*')n=string.gsub(n,'[^0-9()%+*%-/]','')return
-n end function b.solveMath()local m='???'for n,o in i:GetChildren()do if o.Name
-=='Mathematician'then local p p=(((((o:FindFirstChild'HumanoidRootClone')):
-FindFirstChild'Remains')):FindFirstChild'Label')local q={}for r,s in p:
-GetChildren()do if s:IsA'TextLabel'then table.insert(q,s)end end table.sort(q,
-function(r,s)return r.LayoutOrder<s.LayoutOrder end)local r=''for s,t in ipairs(
-q)do r=r..t.Text..'\n'end r=clean_text(r)local s,t=loadstring('return '..r)if
-not s then warn(`Couldn't parse Mathematician's TextLabel: {t}`)else k:
-FireServer('Math',tostring(s()))m=tostring(s())end end end return m end return b
-end function a.f()local b=a.cache.f if not b then b={c=__modImpl()}a.cache.f=b
-end return b.c end end do local function __modImpl()local b=a.c()local c={}local
-d=false local e function c.record()if d then return b.error'Already recording.'
-end e=hookmetamethod(game,'__namecall',function(f,...)local g=getnamecallmethod(
-)if g=='FireServer'then local h={...}if h[1]=='lol'then print
-'detected placing unit!!!'end end return e(...)end)end function c.stop()if not d
-then return b.error'Not recording currently'end end function c.isRecording()
-return d end function c.ableToRecord()return end return c end function a.g()
-local b=a.cache.g if not b then b={c=__modImpl()}a.cache.g=b end return b.c end
-end do local function __modImpl()local b={}local c=Color3.fromRGB(0,230,0)local
-d=Color3.fromRGB(230,0,0)function b.bool2string(e)return e and'yes'or'no'end
-function b.bool2color(e)return e and c or d end function b.isSurvival()return
-game end return b end function a.h()local b=a.cache.h if not b then b={c=
-__modImpl()}a.cache.h=b end return b.c end end do local function __modImpl()
-local b=a.f()local c=a.a()local d=a.b()local e=a.e()local f=a.g()local g=a.h()
-local h=game:GetService'RunService'local i=request{Url=
+m)local n=string.gsub(m,'\u{d7}','*')n=string.gsub(n,'\u{f7}','/')n=string.gsub(
+n,'\u{221a}(%d+)','math.sqrt(%1)')n=string.gsub(n,'\u{221a}%(','math.sqrt(')n=
+string.gsub(n,'[^%w()%+*%-/%.%^]','')return n end function b.solveMath()local m=
+'Answer: ???'for n,o in i:GetChildren()do local p=(o:FindFirstChild
+'HumanoidRootClone')if p then local q=(p:FindFirstChild'Remains')if q then local
+r=(q:FindFirstChild'Label')if r then local s={}for t,u in r:GetChildren()do if u
+:IsA'TextLabel'then table.insert(s,u)end end table.sort(s,function(t,u)return t.
+LayoutOrder<u.LayoutOrder end)local t=''for u,v in ipairs(s)do local w=(v:
+FindFirstChild'Square')if w and w.Visible then t=t..v.Text..'^2'else t=t..v.Text
+end t=t..'\n'end t=clean_text(t)local u,v=loadstring('return '..t)if not u then
+warn(`Couldn't parse Mathematician's TextLabel: {v}`)warn(`Chunk source: {t}`)
+else k:FireServer('Math',tostring(u()))m=`Answer: {tostring(u())}`end end end
+end end return m end return b end function a.h()local b=a.cache.h if not b then
+b={c=__modImpl()}a.cache.h=b end return b.c end end do local function __modImpl(
+)local b=a.b()local c=a.e()local d=a.f()local e=a.g()local f=game:GetService
+'RunService'local g=request{Url=
 [[https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua]],
-Method='GET'}.Body local j,k=loadstring(i)assert(j,`Obsidian UI Library failed to load: {
-k}`)local l=(j())local m={}local n=false function m.init()end local function
-Interface_settingsTab(o)local p=o:AddTab('Settings','wrench')do local q=p:
-AddLeftGroupbox('UI Settings','wrench')do q:AddLabel'Menu bind':AddKeyPicker(
+Method='GET'}.Body local h,i=loadstring(g)assert(h,`Obsidian UI Library failed to load: {
+i}`)local j=(h())local k={}local l=false function k.init()end local function
+Interface_settingsTab(m)local n=m:AddTab('Settings','wrench')do local o=n:
+AddLeftGroupbox('UI Settings','wrench')do o:AddLabel'Menu bind':AddKeyPicker(
 'MenuKeybind',{Default='RightShift',NoUI=true,Text='Menu keybind',
-ChangedCallback=function(r)if r:IsA'KeyCode'then l.ToggleKeybind=r end end})q:
-AddButton('Unload',function()l:Unload()end)end end l.ToggleKeybind=Enum.KeyCode.
-RightShift end function m.startSurvival()assert(not n,
+ChangedCallback=function(p)if p:IsA'KeyCode'then j.ToggleKeybind=p end end})o:
+AddButton('Unload',function()j:Unload()end)end end j.ToggleKeybind=Enum.KeyCode.
+RightShift end function k.startSurvival()assert(not l,
 [[You double called `Interface.start*`. Which obviously should not ever happen.]]
-)n=true d.enableInterface()local o=l:CreateWindow{Title='WTDm',Footer=
-'version: WTDm',Icon='',NotifySide='Right',Center=true,ShowCustomCursor=false}
-local p=o:AddTab('Main','user')do local q=p:AddLeftGroupbox('Bypasses','boxes')
-do q:AddToggle('ToggleNoInspect',{Text='Bypass no inspect',Tooltip=
+)l=true b.enableInterface()local m=a.h()local n=j:CreateWindow{Title='WTDm',
+Footer='version: WTDm',Icon='',NotifySide='Right',Center=true,ShowCustomCursor=
+false}local o=n:AddTab('Main','user')do local p=o:AddLeftGroupbox('Bypasses',
+'boxes')do p:AddToggle('ToggleNoInspect',{Text='Bypass no inspect',Tooltip=
 [[Allows you to see and inspect units info when you normally cannot.
 (for an example, using a Knowledge Crystal)]]
 ,DisabledTooltip="This executor doesn't support this feature.",Default=false,
-Disabled=false,Visible=true,Risky=false,Callback=b.toggleBypassInspect})q:
-AddButton{Text='Fullbright',Tooltip='future is bright',Func=b.fullbright}end
-local r=p:AddRightGroupbox('Math','boxes')do local s=r:AddLabel
+Disabled=false,Visible=true,Risky=false,Callback=m.toggleBypassInspect})p:
+AddButton{Text='Fullbright',Tooltip='future is bright',Func=m.fullbright}end
+local q=o:AddRightGroupbox('Math','square-sigma')do local r=q:AddLabel
 'Answer: click button below'q:AddButton{Text='Solve math',Tooltip=
-"Solves current Mathematician's problem.",Func=function()local t=b.solveMath()s:
-SetText(t)end}end end Interface_settingsTab(o)end function m.startLobby()assert(
-not n,
+"Solves current Mathematician's problem.",Func=function()local s=m.solveMath()or
+'Answer: ???'r:SetText(s)end}end end Interface_settingsTab(n)end function k.
+startLobby()assert(not l,
 [[You double called `Interface.start*`. Which obviously should not ever happen.]]
-)n=true d.enableInterface()local o=l:CreateWindow{Title='another wtd script',
-Footer='version: plus',Icon='',NotifySide='Right',Center=true,ShowCustomCursor=
-false}local p=o:AddTab('Main','user')do local q=p:AddLeftGroupbox('Badges',
-'award')do local r=q:AddLabel'Loading Badges info..'task.defer(function()local s
-s=q:AddButton{Text="Get 'Long Way Home' badge",Tooltip=
+)l=true b.enableInterface()local m=a.a()local n=j:CreateWindow{Title=
+'another wtd script',Footer='version: plus',Icon='',NotifySide='Right',Center=
+true,ShowCustomCursor=false}local o=n:AddTab('Main','user')do local p=o:
+AddLeftGroupbox('Badges','award')do local q=p:AddLabel'Loading Badges info..'
+task.defer(function()local r r=p:AddButton{Text="Get 'Long Way Home' badge",
+Tooltip=
 [[Giving you a free badge.
 You can collect 10k credz, 2 trophies and 25 tokens
 in the badges section.]]
-,Func=function()s.Disabled=true c.getLongWayHomeBadge()end,Disabled=c.
+,Func=function()r:SetDisabled(true)m.getLongWayHomeBadge()end,Disabled=m.
 isSubwayBadgeOwned(),DisabledTooltip=
-'You already own this badge. Nothing will change.'}local t t=q:AddButton{Text=
+'You already own this badge. Nothing will change.'}local s s=p:AddButton{Text=
 "Get 'Everyone Is Here' badge",Tooltip=
 [[Giving you a free badge.
 You can collect 33.33k credz, 2 trophies and 75 tokens
 in the badges section.]]
-,Func=function()t.Disabled=true c.getEveryoneIsHereBadge()end,Disabled=c.
+,Func=function()s:SetDisabled(true)m.getEveryoneIsHereBadge()end,Disabled=m.
 isTrainFriendsBadgeOwned(),DisabledTooltip=
-'You already own this badge. Nothing will change.'}r:SetVisible(false)end)end
-local r=p:AddRightGroupbox('Items','shovel')do r:AddButton{Text=
+'You already own this badge. Nothing will change.'}q:SetVisible(false)end)end
+local q=o:AddRightGroupbox('Items','shovel')do q:AddButton{Text=
 'Get Subway ticket code',Tooltip=
 [[Advice's dialogue will be shown on click.
 Input in the 'codes' the code she says.]]
-,Func=c.getTicketDialogue}r:AddButton{Text='Get Power gems',Tooltip=
-'You will get five gems, needed for Auditor.',Func=c.getPowerGems}r:AddButton{
-Text='Pickup lockpick',Tooltip=
+,Func=m.getTicketDialogue}q:AddButton{Text='Get Power gems',Tooltip=
+'You will get five gems, needed for Auditor.',Func=m.getPowerGems}q:AddButton{
+Text='Activate known codes',Func=m.activateEveryCode}q:AddButton{Text=
+'Pickup lockpick',Tooltip=
 [[Needed to open 10 trophies door (if you have less)
 or to open and enter the Doors mode.]]
-,Func=c.activateLockpick}r:AddButton{Text='Toggle no rewards modifier',Tooltip=
+,Func=m.activateLockpick}q:AddButton{Text='Toggle no rewards modifier',Tooltip=
 [[Babygoo semi-patched this.
 You have to be a teleporter owner to toggle.
 On maps like Duels, if you have more than one modificator - server will manually enable no rewards modifiers.
 Allows you to enable Event maps rewards.
 Or disable rewards on any other map.. if you want so.]]
-,Func=c.toggleNoRewards}end local s=p:AddLeftGroupbox('Autofarm','tractor')do c.
-setAutofishingToggler(s:AddToggle('ToggleAutoFish',{Text='Autofish',Tooltip=
+,Func=m.toggleNoRewards}end local r=o:AddLeftGroupbox('Autofarm','tractor')do m.
+setAutofishingToggler(r:AddToggle('ToggleAutoFish',{Text='Autofish',Tooltip=
 [[Autofarming fish. Yeah.
 You need to have Fishing Rod equipped.]],Default=false
-,Callback=c.toggleAutofishing}))s:AddButton('Teleport to the Fishing Rod',c.
-teleportToFishingRod)end end Interface_settingsTab(o)end return m end function a
+,Callback=m.toggleAutofishing}))r:AddButton('Teleport to the Fishing Rod',m.
+teleportToFishingRod)end end Interface_settingsTab(n)end return k end function a
 .i()local b=a.cache.i if not b then b={c=__modImpl()}a.cache.i=b end return b.c
 end end end local b=a.a()local c=a.c()local d=a.e()local e=a.i()local f,g=pcall(
 function()d.identityManipulation.test()d.hookmetamethod.test()d.hookfunction.
