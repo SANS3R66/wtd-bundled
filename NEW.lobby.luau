@@ -166,14 +166,13 @@ end function b.bridge_interfaceLogsSuccess(d)warn
 [[Interface didn't bridge logs! Check status with StatesBridge.isInterfaceLoaded before calling this..]]
 end return b end function a.d()local b=a.cache.d if not b then b={c=__modImpl()}
 a.cache.d=b end return b.c end end do local function __modImpl()local b=a.d()
-local c={}local d={}local e={}local f={}function c.print(g)if b.
-isInterfaceLoaded()then b.bridge_interfaceLogsPrint(g)else table.insert(d,
-'[PRE-UI] '..g)end end function c.warn(g)if b.isInterfaceLoaded()then b.
-bridge_interfaceLogsWarn(g)else table.insert(e,'[PRE-UI] '..g)end end function c
-.error(g)if b.isInterfaceLoaded()then b.bridge_interfaceLogsError(g)else table.
-insert(f,'[PRE-UI] '..g)end end function c.flushStock()if b.isInterfaceLoaded()
-then for g,h in ipairs(d)do c.print(h)end for g,h in ipairs(e)do c.print(h)end
-for g,h in ipairs(f)do c.print(h)end d={}e={}f={}else warn
+local c={}local d={}local e={}local f={}local function dispatch(g,h,i)if b.
+isInterfaceLoaded()then h(g)else table.insert(i,'[PRE-UI] '..g)end end
+local function flushBuffer(g)for h,i in ipairs(g)do c.print(i)end end function c
+.print(g)dispatch(g,b.bridge_interfaceLogsPrint,d)end function c.warn(g)
+dispatch(g,b.bridge_interfaceLogsWarn,e)end function c.error(g)dispatch(g,b.
+bridge_interfaceLogsError,f)end function c.flushStock()if b.isInterfaceLoaded()
+then flushBuffer(d)flushBuffer(e)flushBuffer(f)d={}e={}f={}else warn
 'Interface is not loaded, unable to flush stock.'end end return c end function a
 .e()local b=a.cache.e if not b then b={c=__modImpl()}a.cache.e=b end return b.c
 end end do local function __modImpl()local b={}function b.attach(c,d)local e e=
@@ -268,46 +267,49 @@ return(f:FindFirstChild(j))end return g end function a.l()local b=a.cache.l if
 not b then b={c=__modImpl()}a.cache.l=b end return b.c end end do local function
 __modImpl()local b=game:GetService'Players'local c=game:GetService'RunService'
 local d=game:GetService'ReplicatedStorage'local e=b.LocalPlayer or b.PlayerAdded
-:Wait()local f=(e:WaitForChild('CASH',5))local g=a.j()local h=a.k()local i=a.l()
-local j=(d:WaitForChild('SpawnUnit',10))if not j then error
-[[This place has no SpawnUnit remote in ReplicatedStorage, exiting.]]end local k
-={match=function(k)return k==h.PlaceIndexUnit end,process=function(k)local l=i.
+:Wait()local f local g=a.j()local h=a.k()local i=a.l()local j local function
+getCash()if f and f.Parent then return f end local k=e:FindFirstChild'CASH'if k
+and k:IsA'NumberValue'then f=k return k end return nil end local function
+getSpawnUnit()if j and j.Parent then return j end local k=d:FindFirstChild
+'SpawnUnit'if k and k:IsA'RemoteEvent'then j=k return k end return nil end local
+k={match=function(k)return k==h.PlaceIndexUnit end,process=function(k)local l=i.
 fromIndex(k:readU8())local m=k:readU8()local n=k:readVector3()task.defer(
-function()local o=i.buttonFromName(l)local p=(o:FindFirstChild'Cooldown')local q
-=(o:FindFirstChild'RealCost')while p.Value>0 do c.Heartbeat:Wait()end while f.
-Value<q.Value do c.Heartbeat:Wait()end j:FireServer('lol',o,m,n)end)end}return k
-end function a.m()local b=a.cache.m if not b then b={c=__modImpl()}a.cache.m=b
-end return b.c end end do local function __modImpl()local b=game:GetService
-'ReplicatedStorage'local c=a.j()local d=a.k()local e=(b:WaitForChild(
-'ChangeUnitTargetting',10))if not e then error
-[[This place has no ChangeUnitTargetting remote in ReplicatedStorage, exiting.]]
-end local f=(workspace:FindFirstChild'BluTeamUnits')local g={match=function(g)
-return g==d.DestroyUnit end,process=function(g)local h=g:readVector3()local i
-local j=math.huge for k,l in f:GetChildren()do local m=(l:FindFirstChild
-'HumanoidRootPart')if m then local n=(m.Position-h).Magnitude if n<=0.5 and n<j
-then j=n i=l end end end if i then e:FireServer(i,true)else warn(`[ChangeUnitTargetting] Couldn't find closest unit to destroy!`
+function()local o=getCash()local p=getSpawnUnit()if not o or not p then return
+end local q=i.buttonFromName(l)local r=(q:FindFirstChild'Cooldown')local s=(q:
+FindFirstChild'RealCost')while r.Value>0 do c.Heartbeat:Wait()end while o.Value<
+s.Value do o.Changed:Wait()end p:FireServer('lol',q,m,n)end)end}return k end
+function a.m()local b=a.cache.m if not b then b={c=__modImpl()}a.cache.m=b end
+return b.c end end do local function __modImpl()local b=game:GetService
+'ReplicatedStorage'local c=a.j()local d=a.k()local e=(b:FindFirstChild
+'ChangeUnitTargetting')local f=(workspace:FindFirstChild'BluTeamUnits')local g={
+match=function(g)return g==d.DestroyUnit end,process=function(g)local h=g:
+readVector3()local i local j=math.huge for k,l in f:GetChildren()do local m=(l:
+FindFirstChild'HumanoidRootPart')if m then local n=(m.Position-h).Magnitude if n
+<=0.5 and n<j then j=n i=l end end end if i then e:FireServer(i,true)else warn(`[ChangeUnitTargetting] Couldn't find closest unit to destroy!`
 )end end}return g end function a.n()local b=a.cache.n if not b then b={c=
 __modImpl()}a.cache.n=b end return b.c end end do local function __modImpl()
 local b=game:GetService'Players'local c=game:GetService'RunService'local d=game:
 GetService'ReplicatedStorage'local e=b.LocalPlayer or b.PlayerAdded:Wait()local
-f=(e:WaitForChild('CASH',5))local g=a.j()local h=a.k()local i=a.l()local j=(d:
-WaitForChild('UpgradeTower',10))if not j then error
-[[This place has no UpgradeTower remote in ReplicatedStorage, exiting.]]end
-local k={match=function(k)return k==h.UpgradeIndexUnit end,process=function(k)
-local l=i.fromIndex(k:readU8())task.defer(function()local m=i.buttonFromName(l)
-local n=(m:FindFirstChild'UpCost')while f.Value<n.Value do c.Heartbeat:Wait()end
-j:FireServer('lol',m)end)end}return k end function a.o()local b=a.cache.o if not
+f local g=a.j()local h=a.k()local i=a.l()local j local function getCash()if f
+and f.Parent then return f end local k=e:FindFirstChild'CASH'if k and k:IsA
+'NumberValue'then f=k return k end return nil end local function getUpgradeTower
+()if j and j.Parent then return j end local k=d:FindFirstChild'UpgradeTower'if k
+and k:IsA'RemoteEvent'then j=k return k end return nil end local k={match=
+function(k)return k==h.UpgradeIndexUnit end,process=function(k)local l=i.
+fromIndex(k:readU8())task.defer(function()local m=getCash()local n=
+getUpgradeTower()if not m or not n then return end local o=i.buttonFromName(l)
+local p=(o:FindFirstChild'UpCost')while m.Value<p.Value do m.Changed:Wait()end n
+:FireServer('lol',o)end)end}return k end function a.o()local b=a.cache.o if not
 b then b={c=__modImpl()}a.cache.o=b end return b.c end end do local function
 __modImpl()local b=game:GetService'ReplicatedStorage'local c=a.j()local d=a.k()
-local e=(b:WaitForChild('ChangeUnitTargetting',10))if not e then error
-[[This place has no ChangeUnitTargetting remote in ReplicatedStorage, exiting.]]
-end local f=(workspace:FindFirstChild'BluTeamUnits')local g={match=function(g)
-return g==d.ChangeUnitTargetting end,process=function(g)local h=g:
-readShortString()local i=g:readVector3()local j local k=math.huge for l,m in f:
-GetChildren()do local n=(m:FindFirstChild'HumanoidRootPart')if n then local o=(n
-.Position-i).Magnitude if o<=0.5 and o<k then k=o j=m end end end if j then e:
-FireServer(j,'SetTarget',{h})else warn(`[ChangeUnitTargetting] Couldn't find closest unit to target with {
-h}!`)end end}return g end function a.p()local b=a.cache.p if not b then b={c=
+local e=(b:FindFirstChild'ChangeUnitTargetting')local f=(workspace:
+FindFirstChild'BluTeamUnits')local g={match=function(g)return g==d.
+ChangeUnitTargetting end,process=function(g)local h=g:readShortString()local i=g
+:readVector3()local j local k=math.huge for l,m in f:GetChildren()do local n=(m:
+FindFirstChild'HumanoidRootPart')if n then local o=(n.Position-i).Magnitude if o
+<=0.5 and o<k then k=o j=m end end end if j then e:FireServer(j,'SetTarget',{h})
+else warn(`[ChangeUnitTargetting] Couldn't find closest unit to target with {h}!`
+)end end}return g end function a.p()local b=a.cache.p if not b then b={c=
 __modImpl()}a.cache.p=b end return b.c end end do local function __modImpl()
 local b=a.j()local c=a.m()local d=a.n()local e=a.o()local f=a.p()local g={c,d,e,
 f}return g end function a.q()local b=a.cache.q if not b then b={c=__modImpl()}a.
