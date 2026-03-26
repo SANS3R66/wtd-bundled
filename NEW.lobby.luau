@@ -257,23 +257,43 @@ local e=c:readF32()local f=c:readF32()return Vector3.new(d,e,f)end function b.
 toBuffer(c)local d=buffer.create(c._offset)buffer.copy(d,0,c._buf,0,c._offset)
 return d end function b.toString(c)return buffer.tostring(c:toBuffer())end
 return b end function a.i()local b=a.cache.i if not b then b={c=__modImpl()}a.
-cache.i=b end return b.c end end do local function __modImpl()local b=a.i()
-return{}end function a.j()local b=a.cache.j if not b then b={c=__modImpl()}a.
-cache.j=b end return b.c end end do local function __modImpl()local b={
-RESERVED_0=0,PlaceIndexUnit=1,UpgradeIndexUnit=2,ChangeUnitTargetting=3,
-DestroyUnit=4}return table.freeze(b)end function a.k()local b=a.cache.k if not b
-then b={c=__modImpl()}a.cache.k=b end return b.c end end do local function
-__modImpl()local b=game:GetService'Players'local c=b.LocalPlayer or b.
-PlayerAdded:Wait()local d=(c:WaitForChild'PlayerGui')local e=(d:WaitForChild
-'AwesomeGUI')local f=(e:FindFirstChild'Towers')local g={}local h={Tower1=1,
-Tower2=2,Tower3=3,Tower4=4,Tower5=5,Tower6=6,Tower7=7}local i={}for j,k in h do
-i[k]=j end function g.fromName(j)return h[j]or 0 end function g.fromIndex(j)
-return i[j]or''end function g.buttonFromName(j)return(f:FindFirstChild(j))end
-return g end function a.l()local b=a.cache.l if not b then b={c=__modImpl()}a.
-cache.l=b end return b.c end end do local function __modImpl()local b=game:
-GetService'Players'local c=game:GetService'RunService'local d=game:GetService
+cache.i=b end return b.c end end do local function __modImpl()local b=game:
+GetService'Players'local c=b.LocalPlayer or b.PlayerAdded:Wait()local d=(c:
+WaitForChild'PlayerGui')local e=(d:WaitForChild'AwesomeGUI')local f=(e:
+FindFirstChild'Towers')local g={}local h={Tower1=1,Tower2=2,Tower3=3,Tower4=4,
+Tower5=5,Tower6=6,Tower7=7}local i={}for j,k in h do i[k]=j end function g.
+fromName(j)return h[j]or 0 end function g.fromIndex(j)return i[j]or''end
+function g.buttonFromName(j)return(f:FindFirstChild(j))end function g.TowerList(
+)return{[10]='Soldier',[20]='Destructor',[30]='Demoman',[40]='Businessman',[50]=
+'Sniper',[60]='Engineer',[70]='Cryomancer',[80]='Guerrilla',[90]='Dissolver',[
+100]='Blockbuster',[110]='Assassin',[120]='Recon',[130]='Juggernaut',[140]=
+'Swordfighter',[150]='Reaper',[160]='Farmer',[170]='Lookout',[180]='Glazier',[
+190]='Barrager',[200]='Turreter',[210]='Airstrike',[220]='Blaster',[230]=
+'Noobfighter',[240]='Ignitor',[250]='Saboteur',[260]='Ninja',[270]='SWAT',[280]=
+'Bank',[290]='Brawler',[300]='Tazer',[310]='Chesspiece',[320]='Aviator',[330]=
+'Medic',[340]='Pulsar',[350]='Constructor',[360]='Mudsplatter',[370]='General',[
+380]='Rocker',[390]='Rifler',[400]='Enchantress',[410]='Mecha',[420]='Mirror',[
+430]='Chef',[440]='Operative',[450]='Pumpkin',[460]='Snowman',[470]='Toxicator',
+[480]='Ruler',[490]='Striker',[500]='Bunny',[510]='Outlaw',[520]='Radar',[530]=
+'Trapper',[540]='Converter',[550]='Singer',[560]='Valkyrie',[570]='Blademaster',
+[580]='Factory',[590]='Gasoliner',[600]='Mimic',[610]='Blademaster',[620]=
+'Beacon',[630]='Drafter',[640]='Mortar',[650]='Cosmonaut',[660]='Sentry',[670]=
+'Chainsaw',[680]='Dancer',[690]='Illuminator',[700]='Switcher',[710]='Duelists',
+[720]='Joyous',[730]='Firebrand',[740]='Priest',[750]='Catgirl',[760]=
+'Priestess',[10010]='Sargeant',[10020]='Eradicator',[10030]='Incendiarier',[
+10040]='Agent',[10050]='Watchtower',[10060]='Artificer',[10070]='Verglasar',[
+10160]='Agronomist',[10190]='Wrecker',[10240]='Kindler',[10280]='Reserve',[10290
+]='Spawner',[16660]='UNNAMED',[20000]='Cowboy'}end return g end function a.j()
+local b=a.cache.j if not b then b={c=__modImpl()}a.cache.j=b end return b.c end
+end do local function __modImpl()local b=a.i()return{}end function a.k()local b=
+a.cache.k if not b then b={c=__modImpl()}a.cache.k=b end return b.c end end do
+local function __modImpl()local b={RESERVED_0=0,PlaceIndexUnit=1,
+UpgradeIndexUnit=2,ChangeUnitTargetting=3,DestroyUnit=4}return table.freeze(b)
+end function a.l()local b=a.cache.l if not b then b={c=__modImpl()}a.cache.l=b
+end return b.c end end do local function __modImpl()local b=game:GetService
+'Players'local c=game:GetService'RunService'local d=game:GetService
 'ReplicatedStorage'local e=b.LocalPlayer or b.PlayerAdded:Wait()local f local g=
-a.j()local h=a.k()local i=a.l()local j local function getCash()if f and f.Parent
+a.k()local h=a.l()local i=a.j()local j local function getCash()if f and f.Parent
 then return f end local k=e:FindFirstChild'CASH'if k and k:IsA'NumberValue'then
 f=k return k end return nil end local function getSpawnUnit()if j and j.Parent
 then return j end local k=d:FindFirstChild'SpawnUnit'if k and k:IsA'RemoteEvent'
@@ -285,7 +305,7 @@ r=(q:FindFirstChild'Cooldown')local s=(q:FindFirstChild'RealCost')while r.Value>
 0 do c.Heartbeat:Wait()end while o.Value<s.Value do o.Changed:Wait()end p:
 FireServer('lol',q,m,n)end)end}return k end function a.m()local b=a.cache.m if
 not b then b={c=__modImpl()}a.cache.m=b end return b.c end end do local function
-__modImpl()local b=game:GetService'ReplicatedStorage'local c=a.j()local d=a.k()
+__modImpl()local b=game:GetService'ReplicatedStorage'local c=a.k()local d=a.l()
 local e=(b:FindFirstChild'ChangeUnitTargetting')local f=(workspace:
 FindFirstChild'BluTeamUnits')local g={match=function(g)return g==d.DestroyUnit
 end,process=function(g)local h=g:readVector3()local i local j=math.huge for k,l
@@ -296,7 +316,7 @@ e:FireServer(i,true)else warn(`[ChangeUnitTargetting] Couldn't find closest unit
 __modImpl()}a.cache.n=b end return b.c end end do local function __modImpl()
 local b=game:GetService'Players'local c=game:GetService'RunService'local d=game:
 GetService'ReplicatedStorage'local e=b.LocalPlayer or b.PlayerAdded:Wait()local
-f local g=a.j()local h=a.k()local i=a.l()local j local function getCash()if f
+f local g=a.k()local h=a.l()local i=a.j()local j local function getCash()if f
 and f.Parent then return f end local k=e:FindFirstChild'CASH'if k and k:IsA
 'NumberValue'then f=k return k end return nil end local function getUpgradeTower
 ()if j and j.Parent then return j end local k=d:FindFirstChild'UpgradeTower'if k
@@ -307,7 +327,7 @@ getUpgradeTower()if not m or not n then return end local o=i.buttonFromName(l)
 local p=(o:FindFirstChild'UpCost')while m.Value<p.Value do m.Changed:Wait()end n
 :FireServer('lol',o)end)end}return k end function a.o()local b=a.cache.o if not
 b then b={c=__modImpl()}a.cache.o=b end return b.c end end do local function
-__modImpl()local b=game:GetService'ReplicatedStorage'local c=a.j()local d=a.k()
+__modImpl()local b=game:GetService'ReplicatedStorage'local c=a.k()local d=a.l()
 local e=(b:FindFirstChild'ChangeUnitTargetting')local f=(workspace:
 FindFirstChild'BluTeamUnits')local g={match=function(g)return g==d.
 ChangeUnitTargetting end,process=function(g)local h=g:readShortString()local i=g
@@ -317,220 +337,260 @@ FindFirstChild'HumanoidRootPart')if n then local o=(n.Position-i).Magnitude if o
 else warn(`[ChangeUnitTargetting] Couldn't find closest unit to target with {h}!`
 )end end}return g end function a.p()local b=a.cache.p if not b then b={c=
 __modImpl()}a.cache.p=b end return b.c end end do local function __modImpl()
-local b=a.j()local c=a.m()local d=a.n()local e=a.o()local f=a.p()local g={c,d,e,
+local b=a.k()local c=a.m()local d=a.n()local e=a.o()local f=a.p()local g={c,d,e,
 f}return g end function a.q()local b=a.cache.q if not b then b={c=__modImpl()}a.
-cache.q=b end return b.c end end do local function __modImpl()local b=a.i()local
-c=a.q()local d={}function d.process(e)local f=b.new(e)if f:readU32()~=1835299959
-then error'Magic bytes mismatch!'end local g=f:readU16()print(`[Decoder] total actions: {
-g}`)local h=-1 for i=1,g do local j=f:readU16()local k=false for l,m in c do if
-m.match(j)then local n=f:readF32()task.wait(n)m.process(f)k=true break end end
-if not k then error(`Invalid opcode number {j}! Possibly previous action (opcode: {
-h}) didn't fully read the stream?`)end h=j end print(`Successfully processed {g} actions!`
-)end return d end function a.r()local b=a.cache.r if not b then b={c=__modImpl()
-}a.cache.r=b end return b.c end end do local function __modImpl()local b=a.h()
-return{}end function a.s()local b=a.cache.s if not b then b={c=__modImpl()}a.
-cache.s=b end return b.c end end do local function __modImpl()local b=a.s()local
-c=a.k()local d=a.l()local e={matchName=function(e)return e=='SpawnUnit'end,
-matchArgs=function(e)return e[1]=='lol'end,encodeOpcode=function(e)e:writeU16(c.
-PlaceIndexUnit)end,encode=function(e,f)e:writeU8(d.fromName(f[2].Name))e:
-writeU8(f[3])e:writeVector3(f[4])end}return e end function a.t()local b=a.cache.
-t if not b then b={c=__modImpl()}a.cache.t=b end return b.c end end do
-local function __modImpl()local b=a.s()local c=a.k()local d={matchName=function(
-d)return d=='ChangeUnitTargetting'end,matchArgs=function(d)return d[2]==true end
-,encodeOpcode=function(d)d:writeU16(c.DestroyUnit)end,encode=function(d,e)local
-f=(e[1])local g=((f:FindFirstChild'HumanoidRootPart')).Position d:writeVector3(g
-)end}return d end function a.u()local b=a.cache.u if not b then b={c=__modImpl()
-}a.cache.u=b end return b.c end end do local function __modImpl()local b=a.s()
-local c=a.k()local d=a.l()local e={matchName=function(e)return e=='UpgradeTower'
-end,matchArgs=function(e)return e[1]=='lol'end,encodeOpcode=function(e)e:
-writeU16(c.UpgradeIndexUnit)end,encode=function(e,f)e:writeU8(d.fromName(f[2].
-Name))end}return e end function a.v()local b=a.cache.v if not b then b={c=
-__modImpl()}a.cache.v=b end return b.c end end do local function __modImpl()
-local b=a.s()local c=a.k()local d={matchName=function(d)return d==
-'ChangeUnitTargetting'end,matchArgs=function(d)return d[2]=='SetTarget'end,
-encodeOpcode=function(d)d:writeU16(c.ChangeUnitTargetting)end,encode=function(d,
-e)local f=(e[1])local g=(e[3][1])local h=((f:FindFirstChild'HumanoidRootPart')).
-Position d:writeShortString(g)d:writeVector3(h)end}return d end function a.w()
-local b=a.cache.w if not b then b={c=__modImpl()}a.cache.w=b end return b.c end
-end do local function __modImpl()local b=a.s()local c=a.t()local d=a.u()local e=
-a.v()local f=a.w()local g={c,d,e,f}return g end function a.x()local b=a.cache.x
-if not b then b={c=__modImpl()}a.cache.x=b end return b.c end end do
-local function __modImpl()local b=a.e()local c=a.h()local d=a.r()local e=a.x()
-local f={}local g=false local h local i=c.new()local j=0 local k=os.clock()local
-l=false local function processFireServer(m,n)for o,p in e do if p.matchName(m)
-and p.matchArgs(n)then j+=1 p.encodeOpcode(i)i:writeF32(os.clock()-k)p.encode(i,
-n)k=os.clock()return end end end local function installHook()if not l then l=
-true local m=getrawmetatable(game)if m then h=hookfunction(m.__namecall,function
-(n,...)if g then local o=getnamecallmethod()if o=='FireServer'then local p={...}
-task.spawn(function()setthreadidentity(8)processFireServer(n.Name,p)end)end end
-return(h)(n,...)end)end end end local function removeHook()end function f.record
-()if g then return b.error'Already recording'end i:reset()j=0 i:writeU32(
-1835299959)i:writeU16(0)k=os.clock()installHook()g=true b.print
-'Started recording!'end function f.play(m)local n=`wtd-macroses/{m}`if not
-isfile(n)then error(`{m} is not a file..`)end local o=readfile(n)b.print(`Processing {
-m}..`)d.process(buffer.fromstring(o))end function f.stop(m)if not g then return
-b.error'Not recording currently'end if m==''then return b.error
-"File name shouldn't be blank"end removeHook()g=false local n=i:getOffset()i:
-seek(4)i:writeU16(j)i:seek(n)writefile(`wtd-macroses/{m}`,i:toString())i:reset()
-j=0 end function f.isRecording()return g end return f end function a.y()local b=
+cache.q=b end return b.c end end do local function __modImpl()local b=2 local c=
+a.i()local d=a.j()local e=a.q()local f=game:GetService'Players'.LocalPlayer
+local g=(game:GetService'TeleportService':GetLocalPlayerTeleportData())or{
+'teleport data is nil'}local h=g[1]local i=(f:FindFirstChild'Tower1')local j=(f:
+FindFirstChild'Tower2')local k=(f:FindFirstChild'Tower3')local l=(f:
+FindFirstChild'Tower4')local m=(f:FindFirstChild'Tower5')local n=d.TowerList()
+local o={}local function checkMetaInformation(p)if p:readU32()~=1835299959 then
+error'Magic bytes mismatch!'end local q=p:readU16()if q~=b then warn(`Encoding version mismatch!`
+)if q>b then error(`Macros format version is higher than i could process. Consider to use loadstring version of the script, bro. Or maybe it's just corrupted.`
+)else error(`Macros format version is lower than i could process.`)end end
+return p:readU16()end local function checkLoadout(p,q)local r=true local s=(f:
+GetAttribute'Accessory')local t=p:readShortString()local u=p:readShortString()
+local v=p:readU32()local w=p:readU32()local x=p:readU32()local y=p:readU32()
+local z=p:readU32()if t~=h then r=false end if u~=s then r=false end if v~=i.
+Value or w~=j.Value or x~=k.Value or y~=l.Value or z~=m.Value then r=false end
+if not r then warn(`Expecting map {t}, got {h} {t==h and'[PASSED]'or'[WRONG]'}`)
+warn(`Expecting accessory {u}, got {s} {u==s and'[PASSED]'or'[WRONG]'}`)warn(`Expecting 1 slot unit {
+n[v]} (ID {v}), got {n[i.Value]} (ID {i.Value}) {v==i.Value and'[PASSED]'or
+'[WRONG]'}`)warn(`Expecting 2 slot unit {n[w]} (ID {w}), got {n[j.Value]} (ID {j
+.Value}) {w==j.Value and'[PASSED]'or'[WRONG]'}`)warn(`Expecting 3 slot unit {n[x
+]} (ID {x}), got {n[k.Value]} (ID {k.Value}) {x==k.Value and'[PASSED]'or
+'[WRONG]'}`)warn(`Expecting 4 slot unit {n[y]} (ID {y}), got {n[l.Value]} (ID {l
+.Value}) {y==l.Value and'[PASSED]'or'[WRONG]'}`)warn(`Expecting 5 slot unit {n[z
+]} (ID {z}), got {n[m.Value]} (ID {m.Value}) {z==m.Value and'[PASSED]'or
+'[WRONG]'}`)end if not q then error
+[[Your loadout doesn't match for this macros. Check console for details.]]end
+end function o.process(p,q)local r=c.new(p)local s=checkMetaInformation(r)print(
+`[Decoder] total actions: {s}`)checkLoadout(r,q)local t=-1 for u=1,s do local v=
+r:readU16()local w=false for x,y in e do if y.match(v)then local z=r:readF32()
+task.wait(z)y.process(r)w=true break end end if not w then error(`Invalid opcode number {
+v}! Possibly previous action (opcode: {t}) didn't fully read the stream?`)end t=
+v end print(`Successfully processed {s} actions!`)end return o end function a.r(
+)local b=a.cache.r if not b then b={c=__modImpl()}a.cache.r=b end return b.c end
+end do local function __modImpl()local b=a.h()return{}end function a.s()local b=
+a.cache.s if not b then b={c=__modImpl()}a.cache.s=b end return b.c end end do
+local function __modImpl()local b=a.s()local c=a.l()local d=a.j()local e={
+matchName=function(e)return e=='SpawnUnit'end,matchArgs=function(e)return e[1]==
+'lol'end,encodeOpcode=function(e)e:writeU16(c.PlaceIndexUnit)end,encode=function
+(e,f)e:writeU8(d.fromName(f[2].Name))e:writeU8(f[3])e:writeVector3(f[4])end}
+return e end function a.t()local b=a.cache.t if not b then b={c=__modImpl()}a.
+cache.t=b end return b.c end end do local function __modImpl()local b=a.s()local
+c=a.l()local d={matchName=function(d)return d=='ChangeUnitTargetting'end,
+matchArgs=function(d)return d[2]==true end,encodeOpcode=function(d)d:writeU16(c.
+DestroyUnit)end,encode=function(d,e)local f=(e[1])local g=((f:FindFirstChild
+'HumanoidRootPart')).Position d:writeVector3(g)end}return d end function a.u()
+local b=a.cache.u if not b then b={c=__modImpl()}a.cache.u=b end return b.c end
+end do local function __modImpl()local b=a.s()local c=a.l()local d=a.j()local e=
+{matchName=function(e)return e=='UpgradeTower'end,matchArgs=function(e)return e[
+1]=='lol'end,encodeOpcode=function(e)e:writeU16(c.UpgradeIndexUnit)end,encode=
+function(e,f)e:writeU8(d.fromName(f[2].Name))end}return e end function a.v()
+local b=a.cache.v if not b then b={c=__modImpl()}a.cache.v=b end return b.c end
+end do local function __modImpl()local b=a.s()local c=a.l()local d={matchName=
+function(d)return d=='ChangeUnitTargetting'end,matchArgs=function(d)return d[2]
+=='SetTarget'end,encodeOpcode=function(d)d:writeU16(c.ChangeUnitTargetting)end,
+encode=function(d,e)local f=(e[1])local g=(e[3][1])local h=((f:FindFirstChild
+'HumanoidRootPart')).Position d:writeShortString(g)d:writeVector3(h)end}return d
+end function a.w()local b=a.cache.w if not b then b={c=__modImpl()}a.cache.w=b
+end return b.c end end do local function __modImpl()local b=a.s()local c=a.t()
+local d=a.u()local e=a.v()local f=a.w()local g={c,d,e,f}return g end function a.
+x()local b=a.cache.x if not b then b={c=__modImpl()}a.cache.x=b end return b.c
+end end do local function __modImpl()local b=a.e()local c=a.h()local d=a.r()
+local e=a.x()local f=game:GetService'Players'.LocalPlayer local g=(game:
+GetService'TeleportService':GetLocalPlayerTeleportData())or{
+'teleport data is nil'}local h=(f:FindFirstChild'Tower1')local i=(f:
+FindFirstChild'Tower2')local j=(f:FindFirstChild'Tower3')local k=(f:
+FindFirstChild'Tower4')local l=(f:FindFirstChild'Tower5')local m={}local n=false
+local o local p=c.new()local q=0 local r=os.clock()local s=false local function
+processFireServer(t,u)for v,w in e do if w.matchName(t)and w.matchArgs(u)then q
++=1 w.encodeOpcode(p)p:writeF32(os.clock()-r)w.encode(p,u)r=os.clock()return end
+end end local function installHook()if not s then s=true local t=
+getrawmetatable(game)if t then o=hookfunction(t.__namecall,function(u,...)if n
+then local v=getnamecallmethod()if v=='FireServer'then local w={...}task.spawn(
+function()setthreadidentity(8)processFireServer(u.Name,w)end)end end return(o)(u
+,...)end)end end end local function removeHook()end function m.record()if n then
+return b.error'Already recording'end p:reset()q=0 p:writeU32(1835299959)p:
+writeU16(2)p:writeU16(0)p:writeShortString(g[1])p:writeShortString((f:
+GetAttribute'Accessory'))p:writeU32(h.Value)p:writeU32(i.Value)p:writeU32(j.
+Value)p:writeU32(k.Value)p:writeU32(l.Value)r=os.clock()installHook()n=true b.
+print'Started recording!'end function m.play(t,u)local v=`wtd-macroses/{t}`if
+not isfile(v)then error(`{t} is not a file..`)end local w=readfile(v)b.print(`Processing {
+t}..`)d.process(buffer.fromstring(w),u)end function m.stop(t)if not n then
+return b.error'Not recording currently'end if t==''then return b.error
+"File name shouldn't be blank"end removeHook()n=false local u=p:getOffset()p:
+seek(6)p:writeU16(q)p:seek(u)writefile(`wtd-macroses/{t}`,p:toString())p:reset()
+q=0 end function m.isRecording()return n end return m end function a.y()local b=
 a.cache.y if not b then b={c=__modImpl()}a.cache.y=b end return b.c end end do
 local function __modImpl()local b={}local c=Color3.fromRGB(0,230,0)local d=
 Color3.fromRGB(230,0,0)function b.bool2string(e)return e and'yes'or'no'end
 function b.bool2color(e)return e and c or d end function b.isSurvival()return
 game end return b end function a.z()local b=a.cache.z if not b then b={c=
 __modImpl()}a.cache.z=b end return b.c end end do local function __modImpl()
-local b=a.y()local c=a.d()local d=a.g()local e=a.z()local f=game:GetService
-'RunService'local g=request{Url=
+local b="this toggle shouldn't ever be disabled"local c=a.y()local d=a.d()local
+e=a.g()local f=a.z()local g=game:GetService'RunService'local h=request{Url=
 [[https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua]],
-Method='GET'}.Body local h,i=loadstring(g)assert(h,`Obsidian UI Library failed to compile: {
-i}`)local j,k=pcall(h)assert(j,`Coulnd't run Obisidan Library: {k}`)if typeof(k)
-=='string'then error'impossible path!! Obsidian should NOT be a string!!'end
-local l={}local m=false function l.init()c.bridge_interfaceLogsPrint=function(n)
-k:Notify{Title='Informer Bridge',Description=n,Time=8}end c.
-bridge_interfaceLogsError=function(n)k:Notify{Title='Informer Error',Description
-=n,Time=10}end end local function Interface_settingsTab(n)local o=n:AddTab(
-'Settings','wrench')do local p=o:AddLeftGroupbox('UI Settings','wrench')do p:
+Method='GET'}.Body local i,j=loadstring(h)assert(i,`Obsidian UI Library failed to compile: {
+j}`)local k,l=pcall(i)assert(k,`Coulnd't run Obisidan Library: {l}`)assert(l,
+[[Obsidian library is nil after running a chunk. Thats. Cool. Or maybe not. Depends on if you wanted to run the script. Yes, I'm right.]]
+)local m={}local n=false function m.init()d.bridge_interfaceLogsPrint=function(o
+)l:Notify{Title='Informer Bridge',Description=o,Time=8}end d.
+bridge_interfaceLogsError=function(o)l:Notify{Title='Informer Error',Description
+=o,Time=10}end end local function Interface_settingsTab(o)local p=o:AddTab(
+'Settings','wrench')do local q=p:AddLeftGroupbox('UI Settings','wrench')do q:
 AddLabel'Menu bind':AddKeyPicker('MenuKeybind',{Default='RightShift',NoUI=true,
-Text='Menu keybind',ChangedCallback=function(q)if q:IsA'KeyCode'then k.
-ToggleKeybind=q end end})p:AddButton('Unload',function()k:Unload()end)end end k.
-ToggleKeybind=Enum.KeyCode.RightShift end function l.startSurvival()assert(not m
+Text='Menu keybind',ChangedCallback=function(r)if r:IsA'KeyCode'then l.
+ToggleKeybind=r end end})q:AddButton('Unload',function()l:Unload()end)end end l.
+ToggleKeybind=Enum.KeyCode.RightShift end function m.startSurvival()assert(not n
 ,
 [[You double called `Interface.start*`. Which obviously should not ever happen.]]
-)m=true c.enableInterface()local n=a.c()n.UI_setThrowNotify(function(o,p,q)k:
-Notify{Title=o,Description=p,Time=q}end)local o=k.Options local p=k:CreateWindow
-{Title='WTDm',Footer='version: WTDm',Icon='',NotifySide='Right',Center=true,
-ShowCustomCursor=false}local q=p:AddTab('Main','user')do local r=q:
-AddLeftGroupbox('Bypasses','boxes')do r:AddToggle('ToggleNoInspect',{Text=
-'Bypass no inspect',Tooltip=
+)n=true d.enableInterface()local o=a.c()o.UI_setThrowNotify(function(p,q,r)l:
+Notify{Title=p,Description=q,Time=r}end)local p=l.Options local q=l.Toggles
+local r=l:CreateWindow{Title='WTDm',Footer='version: 1.0',Icon='',NotifySide=
+'Right',Center=true,ShowCustomCursor=false}local s=r:AddTab('Main','user')do
+local t=s:AddLeftGroupbox('Bypasses','boxes')do t:AddToggle('ToggleNoInspect',{
+Text='Bypass no inspect',Tooltip=
 [[Allows you to see and inspect units info when you normally cannot.
 (for an example, using a Knowledge Crystal)]]
 ,DisabledTooltip="This executor doesn't support this feature.",Disabled=false,
-Default=false,Visible=true,Risky=false,Callback=n.toggleBypassInspect})r:
-AddDivider()r:AddButton{Text='Fullbright',Tooltip='future is bright',Func=n.
-fullbright}end local s=q:AddRightGroupbox('Math','square-sigma')do local t=s:
-AddLabel'Answer: click button below's:AddButton{Text='Solve math',Tooltip=
-"Solves current Mathematician's problem.",Func=function()local u=n.solveMath()or
-'Answer: ???'t:SetText(u)end}end local t=q:AddLeftGroupbox('Auto','boxes')do t:
+Default=false,Visible=true,Risky=false,Callback=o.toggleBypassInspect})t:
+AddDivider()t:AddButton{Text='Fullbright',Tooltip='future is bright',Func=o.
+fullbright}end local u=s:AddRightGroupbox('Math','square-sigma')do local v=u:
+AddLabel'Answer: click button below'u:AddButton{Text='Solve math',Tooltip=
+"Solves current Mathematician's problem.",Func=function()local w=o.solveMath()or
+'Answer: ???'v:SetText(w)end}end local v=s:AddLeftGroupbox('Auto','boxes')do v:
 AddToggle('ToggleAutoBank',{Text='Auto bank',Tooltip=
 'Uses bank ability owned by you whenever they full.',DisabledTooltip=
 "This executor doesn't support this feature.",Disabled=false,Default=false,
-Visible=true,Risky=false,Callback=n.toggleAutoBank})t:AddSlider(
+Visible=true,Risky=false,Callback=o.toggleAutoBank})v:AddSlider(
 'SliderAutoBankDelay',{Text='Auto bank delay',Tooltip=
 [[Delay before using bank.
 Good when playing with the team, otherwise useless.]]
-,Default=0,Min=0,Max=5,Rounding=1,Callback=n.setAutoBankDelay})end if not n.
-isArchive()then local u=q:AddRightGroupbox('Selected','boxes')do local v={
-TemplateText=u:AddLabel{Text='Press on an entity.\nWIP',Visible=true},
-UnsupportedText=u:AddLabel{Text='This entity has no options.',Visible=false},
-SWAT_RequiredCharge=u:AddSlider('SliderSWAT_RequiredCharge',{Text=
-'Required charge',Default=6,Min=1,Max=9,Visible=false}),SWAT_NotifyOnCharge=u:
+,Default=0,Min=0,Max=5,Rounding=1,Callback=o.setAutoBankDelay})end if not o.
+isArchive()then local w=s:AddRightGroupbox('Selected','boxes')do local x={
+TemplateText=w:AddLabel{Text='Press on an entity.\nWIP',Visible=true},
+UnsupportedText=w:AddLabel{Text='This entity has no options.',Visible=false},
+SWAT_RequiredCharge=w:AddSlider('SliderSWAT_RequiredCharge',{Text=
+'Required charge',Default=6,Min=1,Max=9,Visible=false}),SWAT_NotifyOnCharge=w:
 AddToggle('ToggleSWAT_NotifyOnCharge',{Text='Notify on charge',Tooltip=
 [[Use slider above to configure required charge.
 You will get notified when current charge equals Required charge.
 (not >=, it's ==)]]
-,Visible=false})}n.setSelectedUIObjects(v)end end end local r=p:AddTab('Macros',
-'user')do local s=r:AddLeftGroupbox('Record','boxes')do s:AddInput(
+,Visible=false})}o.setSelectedUIObjects(x)end end end local t=r:AddTab('Macros',
+'user')do local u=t:AddLeftGroupbox('Record','boxes')do u:AddInput(
 'InputMacrosName',{Text='Macros file name',Tooltip=
 [[Name to save actions on stop.
 It will be saved in workspace/wtd-macroses folder.
 You can share it with other players i guess?]]
-,Placeholder='desert-casual.wtdm',ClearTextOnFocus=false})s:AddDivider()s:
+,Placeholder='desert-casual.wtdm',ClearTextOnFocus=false})u:AddDivider()u:
 AddButton{Text='Start recording',Tooltip=
 [[Starts recording your actions
 Consider to use auto recorder instead of this. (timing problems)
 Recording may be unstable and you may see some bugs, so it's pretty much WIP]]
-,Disabled=not d.ableToRecord(),DisabledTooltip='Your executor is too poor.',Func
-=b.record}s:AddButton{Text='Stop',Tooltip=
+,Disabled=not e.ableToRecord(),DisabledTooltip='Your executor is too poor.',Func
+=c.record}u:AddButton{Text='Stop',Tooltip=
 [[Stops the recording and dumps your action to file to play it after]],Disabled=
-not d.ableToRecord(),DisabledTooltip=
+not e.ableToRecord(),DisabledTooltip=
 [[You can't even start the recording so why do you need to stop it]],Func=
-function()local t=(o.InputMacrosName)b.stop(t.Value)end}s:AddDivider()task.
-spawn(function()local t=s:AddToggle('ToggleAutoRecord',{Text=
+function()local v=(p.InputMacrosName)c.stop(v.Value)end}u:AddDivider()task.
+spawn(function()local v=u:AddToggle('ToggleAutoRecord',{Text=
 'Auto start recording',Tooltip=
 [[Auto starts recording on GameState change
 (when you select mode and game starts)]]
-,DisabledTooltip=not d.ableToRecord()and'Your executor is too poor.'or
-'Already triggered auto record',Disabled=not d.ableToRecord()})local u=n.
-getGameState()u.Changed:Wait()u.Changed:Wait()if t.Value then b.record()t:
-SetValue(false)t:SetDisabled(true)end end)end local t=r:AddRightGroupbox(
-'Playing','boxes')do t:AddInput('InputPlayMacrosName',{Text='Macros file name',
+,DisabledTooltip=not e.ableToRecord()and'Your executor is too poor.'or
+'Already triggered auto record',Disabled=not e.ableToRecord()})local w=o.
+getGameState()w.Changed:Wait()w.Changed:Wait()if v.Value then c.record()v:
+SetValue(false)v:SetDisabled(true)end end)end local v=t:AddRightGroupbox(
+'Playing','boxes')do v:AddInput('InputPlayMacrosName',{Text='Macros file name',
 Tooltip=[[Macros to play.
 File should be in workspace/wtd-macroses folder.]],
-Placeholder='desert-casual.wtdm',ClearTextOnFocus=false})t:AddDivider()t:
-AddButton{Text='Play macros',Tooltip=
+Placeholder='desert-casual.wtdm',ClearTextOnFocus=false})local w=v:AddToggle(
+'ToggleIgnoreChecks',{Text='Ignore loadout check',Tooltip=
+[[Macros will proceed to play even if your loadout doesn't match.
+I have no idea why would you enable this, but ok?]]
+,DisabledTooltip=b})v:AddDivider()v:AddButton{Text='Play macros',Tooltip=
 [[Consider to use auto start play instead of this. (timing problems)]],Func=
-function()local u=(o.InputPlayMacrosName)b.play(u.Value)end}task.spawn(function(
-)local u=t:AddToggle('ToggleAutoPlay',{Text='Auto start play',Tooltip=
+function()local x=(p.InputPlayMacrosName)local y,z=pcall(c.play,x.Value,w.Value)
+if not y then l:Notify{Title='Macros crashed',Description=z or'unknown reason',
+Time=14}warn(`Interface.startSurvival: Macros.play has CRASHED: {z or
+'unknown reason'}`)end end}task.spawn(function()local x=v:AddToggle(
+'ToggleAutoPlay',{Text='Auto start play',Tooltip=
 'Auto starts playing on GameState change',DisabledTooltip=
-'Already triggered auto play'})local v=n.getGameState()v.Changed:Wait()v.Changed
-:Wait()if u.Value then local w=(o.InputPlayMacrosName)b.play(w.Value)u:SetValue(
-false)u:SetDisabled(true)end end)end end Interface_settingsTab(p)end function l.
-startLobby()assert(not m,
+'Already triggered auto play'})local y=o.getGameState()y.Changed:Wait()y.Changed
+:Wait()if x.Value then x:SetValue(false)x:SetDisabled(true)local z=(p.
+InputPlayMacrosName)local A=(p.ToggleIgnoreChecks)local B,C=pcall(c.play,z.Value
+,A.Value)if not B then l:Notify{Title='Auto Macros crashed',Description=C or
+'unknown reason',Time=14}warn(`Interface.startSurvival: Macros.play has CRASHED on auto play: {
+C or'unknown reason'}`)end end end)end end Interface_settingsTab(r)end function
+m.startLobby()assert(not n,
 [[You double called `Interface.start*`. Which obviously should not ever happen.]]
-)m=true c.enableInterface()local n=a.a()local o=k.Options local p=k:CreateWindow
+)n=true d.enableInterface()local o=a.a()local p=l.Options local q=l:CreateWindow
 {Title='another wtd script',Footer='version: plus',Icon='',NotifySide='Right',
-Center=true,ShowCustomCursor=false}local q=p:AddTab('Main','user')do local r=q:
-AddLeftGroupbox('Badges','award')do local s=r:AddLabel'Loading Badges info..'
-task.defer(function()local t t=r:AddButton{Text="Get 'Long Way Home' badge",
+Center=true,ShowCustomCursor=false}local r=q:AddTab('Main','user')do local s=r:
+AddLeftGroupbox('Badges','award')do local t=s:AddLabel'Loading Badges info..'
+task.defer(function()local u u=s:AddButton{Text="Get 'Long Way Home' badge",
 Tooltip=
 [[Giving you a free badge.
 You can collect 10k credz, 2 trophies and 25 tokens
 in the badges section.]]
-,Func=function()t:SetDisabled(true)n.getLongWayHomeBadge()end,Disabled=n.
+,Func=function()u:SetDisabled(true)o.getLongWayHomeBadge()end,Disabled=o.
 isSubwayBadgeOwned(),DisabledTooltip=
-'You already own this badge. Nothing will change.'}local u u=r:AddButton{Text=
+'You already own this badge. Nothing will change.'}local v v=s:AddButton{Text=
 "Get 'Everyone Is Here' badge",Tooltip=
 [[Giving you a free badge.
 You can collect 33.33k credz, 2 trophies and 75 tokens
 in the badges section.]]
-,Func=function()u:SetDisabled(true)n.getEveryoneIsHereBadge()end,Disabled=n.
+,Func=function()v:SetDisabled(true)o.getEveryoneIsHereBadge()end,Disabled=o.
 isTrainFriendsBadgeOwned(),DisabledTooltip=
-'You already own this badge. Nothing will change.'}s:SetVisible(false)end)end
-local s=q:AddRightGroupbox('Items','shovel')do s:AddButton{Text=
+'You already own this badge. Nothing will change.'}t:SetVisible(false)end)end
+local t=r:AddRightGroupbox('Items','shovel')do t:AddButton{Text=
 'Get Subway ticket code',Tooltip=
 [[Advice's dialogue will be shown on click.
 Input in the 'codes' the code she says.]]
-,Func=n.getTicketDialogue}s:AddButton{Text='Get Power gems',Tooltip=
-'You will get five gems, needed for Auditor.',Func=n.getPowerGems}s:AddButton{
-Text='Activate known codes',Func=n.activateEveryCode}s:AddButton{Text=
+,Func=o.getTicketDialogue}t:AddButton{Text='Get Power gems',Tooltip=
+'You will get five gems, needed for Auditor.',Func=o.getPowerGems}t:AddButton{
+Text='Activate known codes',Func=o.activateEveryCode}t:AddButton{Text=
 'Pickup lockpick',Tooltip=
 [[Needed to open 10 trophies door (if you have less)
 or to open and enter the Doors mode.]]
-,Func=n.activateLockpick}end local t=q:AddLeftGroupbox('Autofarm','tractor')do
-do n.setAutofishingToggler(t:AddToggle('ToggleAutoFish',{Text='Autofish',Tooltip
+,Func=o.activateLockpick}end local u=r:AddLeftGroupbox('Autofarm','tractor')do
+do o.setAutofishingToggler(u:AddToggle('ToggleAutoFish',{Text='Autofish',Tooltip
 =
 [[Auto farming fish.
 Equip Fishing Rod (not the weak one) firstly to start fishing.
 Just dont forget about 20 min idle kick.
 Get some autocliker clicking on some GUI element (like settings button) to prevent idling.
 (do not click on the screen cause it will mostly will interrupt auto fishing).]]
-,Callback=n.toggleAutofishing}))t:AddButton('Teleport to the Fishing Rod',n.
-teleportToFishingRod)end t:AddDivider()do t:AddInput('InputTrinketValue',{Text=
+,Callback=o.toggleAutofishing}))u:AddButton('Teleport to the Fishing Rod',o.
+teleportToFishingRod)end u:AddDivider()do u:AddInput('InputTrinketValue',{Text=
 'Trinket to reroll',Tooltip=
 [[Script will try 500 times to roll this trinket.
 Enter full trinket name.]],
-Placeholder='Forbidden Floors',ClearTextOnFocus=false})local u=t:AddSlider(
+Placeholder='Forbidden Floors',ClearTextOnFocus=false})local v=u:AddSlider(
 'SliderTrinketRerollSpeed',{Text='Reroll delay',Tooltip=
 [[Delay between rerolling.
 Increase delay if loop skipping needed trinket.
 (I wouldnt recommend <0.05s)]]
-,Default=0.08,Min=0,Max=0.5,Suffix='s',Rounding=2})local v={value=false}local w
-w=t:AddButton{Text='Loop reroll',Func=function()if not v.value then v.value=true
-w:SetText'Click to stop rerolling'local x=(o.InputTrinketValue)n.rerollTrinket(x
-.Value,u.Value,w,v)else v.value=false w:SetText'Loop reroll'n.unRollTrinket()end
-end}end end local u=q:AddRightGroupbox('Teleporter','boxes')do u:AddButton{Text=
+,Default=0.08,Min=0,Max=0.5,Suffix='s',Rounding=2})local w={value=false}local x
+x=u:AddButton{Text='Loop reroll',Func=function()if not w.value then w.value=true
+x:SetText'Click to stop rerolling'local y=(p.InputTrinketValue)o.rerollTrinket(y
+.Value,v.Value,x,w)else w.value=false x:SetText'Loop reroll'o.unRollTrinket()end
+end}end end local v=r:AddRightGroupbox('Teleporter','boxes')do v:AddButton{Text=
 'Toggle no rewards modifier',Tooltip=
 [[Babygoo semi-patched this.
 You have to be a teleporter owner to toggle.
 On maps like Duels, if you have more than one modificator - server will manually enable no rewards modifiers.
 Allows you to enable Event maps rewards.
 Or disable rewards on any other map.. if you want so.]]
-,Func=n.toggleNoRewards}u:AddToggle('ToggleMultipleModifiers',{Text=
+,Func=o.toggleNoRewards}v:AddToggle('ToggleMultipleModifiers',{Text=
 'Allow multiple modifiers',Tooltip=
 [[Allows you to activate more than 1 modifiers with same effect.
 (for an example, you can activate both Healthy & Superhealth modifier together)]]
-,Callback=n.toggleMultipleModifiers})end end Interface_settingsTab(p)end return
-l end function a.A()local b=a.cache.A if not b then b={c=__modImpl()}a.cache.A=b
+,Callback=o.toggleMultipleModifiers})end end Interface_settingsTab(q)end return
+m end function a.A()local b=a.cache.A if not b then b={c=__modImpl()}a.cache.A=b
 end return b.c end end end local b=5656754541 local c=game.PlaceId==b local d if
 c then d=a.a()else d=a.c()end local e=a.e()local f=a.g()local g=a.A()local h,i=
 pcall(function()f.identityManipulation.test()f.hookmetamethod.test()f.
