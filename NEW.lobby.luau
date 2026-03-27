@@ -514,27 +514,26 @@ spawn(function()local v=u:AddToggle('ToggleAutoRecord',{Text=
 'Already triggered auto record',Disabled=not e.ableToRecord()})local w=o.
 getGameState()w.Changed:Wait()w.Changed:Wait()if v.Value then c.record()v:
 SetValue(false)v:SetDisabled(true)end end)end local v=t:AddRightGroupbox(
-'Playing','boxes')do v:AddInput('InputPlayMacrosName',{Text='Macros file name',
-Tooltip=[[Macros to play.
-File should be in workspace/wtd-macroses folder.]],
-Placeholder='desert-casual.wtdm',ClearTextOnFocus=false})local w=v:AddToggle(
+'Playing','boxes')do local w=v:AddInput('InputPlayMacrosName',{Text=
+'Macros file name',Tooltip=
+[[Macros to play.
+File should be in workspace/wtd-macroses folder.]],Placeholder
+='desert-casual.wtdm',ClearTextOnFocus=false})local x=v:AddToggle(
 'ToggleIgnoreChecks',{Text='Ignore loadout check',Tooltip=
 [[Macros will proceed to play even if your loadout doesn't match.
 I have no idea why would you enable this, but ok?]]
 ,DisabledTooltip=b})v:AddDivider()v:AddButton{Text='Play macros',Tooltip=
 [[Consider to use auto start play instead of this. (timing problems)]],Func=
-function()local x=(p.InputPlayMacrosName)local y,z=pcall(c.play,x.Value,w.Value)
-if not y then l:Notify{Title='Macros crashed',Description=z or'unknown reason',
-Time=14}warn(`Interface.startSurvival: Macros.play has CRASHED: {z or
-'unknown reason'}`)end end}task.spawn(function()local x=v:AddToggle(
+function()local y,z=pcall(c.play,w.Value,x.Value)if not y then l:Notify{Title=
+'Macros crashed',Description=z or'unknown reason',Time=14}warn(`Interface.startSurvival: Macros.play has CRASHED: {
+z or'unknown reason'}`)end end}task.spawn(function()local y=v:AddToggle(
 'ToggleAutoPlay',{Text='Auto start play',Tooltip=
 'Auto starts playing on GameState change',DisabledTooltip=
-'Already triggered auto play'})local y=o.getGameState()y.Changed:Wait()y.Changed
-:Wait()if x.Value then x:SetValue(false)x:SetDisabled(true)local z=(p.
-InputPlayMacrosName)local A=(p.ToggleIgnoreChecks)local B,C=pcall(c.play,z.Value
-,A.Value)if not B then l:Notify{Title='Auto Macros crashed',Description=C or
-'unknown reason',Time=14}warn(`Interface.startSurvival: Macros.play has CRASHED on auto play: {
-C or'unknown reason'}`)end end end)end end Interface_settingsTab(r)end function
+'Already triggered auto play'})local z=o.getGameState()z.Changed:Wait()z.Changed
+:Wait()if y.Value then y:SetValue(false)y:SetDisabled(true)local A,B=pcall(c.
+play,w.Value,x.Value)if not A then l:Notify{Title='Auto Macros crashed',
+Description=B or'unknown reason',Time=14}warn(`Interface.startSurvival: Macros.play has CRASHED on auto play: {
+B or'unknown reason'}`)end end end)end end Interface_settingsTab(r)end function
 m.startLobby()assert(not n,
 [[You double called `Interface.start*`. Which obviously should not ever happen.]]
 )n=true d.enableInterface()local o=a.a()local p=l.Options local q=l:CreateWindow
