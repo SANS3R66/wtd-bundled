@@ -46,7 +46,10 @@ task.cancel(z)return end k:FireServer'reroll'l.Changed:Wait()task.wait(B)end end
 toggleMultipleModifiers()if not u then u=true for A,B in m:GetChildren()do if B.
 Name=='Multiple'then B.Name='ClearlyNotMultiple'end end else u=false for A,B in
 m:GetChildren()do if B.Name=='ClearlyNotMultiple'then B.Name='Multiple'end end
-end end return t end function a.a()local b=a.cache.a if not b then b={c=
+end end local A=false d.Folder.FX.OnClientEvent:Connect(function(B,C)if B==
+'Fish_Data'and A then local D={}for E,F in C do table.insert(D,E)end h:
+FireServer('Sell Fish',D[math.random(1,#D)])end end)function t.toggleAutosell()A
+=not A end return t end function a.a()local b=a.cache.a if not b then b={c=
 __modImpl()}a.cache.a=b end return b.c end end do local function __modImpl()
 local b={}function b.cleanText(c)local d=string.gsub(c,'\u{d7}','*')d=string.
 gsub(d,'\u{f7}','/')d=string.gsub(d,'\u{221a}(%d+)','math.sqrt(%1)')d=string.
@@ -528,7 +531,7 @@ C or'unknown reason'}`)end end end)end end Interface_settingsTab(r)end function
 m.startLobby()assert(not n,
 [[You double called `Interface.start*`. Which obviously should not ever happen.]]
 )n=true d.enableInterface()local o=a.a()local p=l.Options local q=l:CreateWindow
-{Title='another wtd script',Footer='version: plus',Icon='',NotifySide='Right',
+{Title='another wtd script',Footer='version: 1.0',Icon='',NotifySide='Right',
 Center=true,ShowCustomCursor=false}local r=q:AddTab('Main','user')do local s=r:
 AddLeftGroupbox('Badges','award')do local t=s:AddLabel'Loading Badges info..'
 task.defer(function()local u u=s:AddButton{Text="Get 'Long Way Home' badge",
@@ -564,7 +567,11 @@ Equip Fishing Rod (not the weak one) firstly to start fishing.
 Just dont forget about 20 min idle kick.
 Get some autocliker clicking on some GUI element (like settings button) to prevent idling.
 (do not click on the screen cause it will mostly will interrupt auto fishing).]]
-,Callback=o.toggleAutofishing}))u:AddButton('Teleport to the Fishing Rod',o.
+,Callback=o.toggleAutofishing}))u:AddToggle('ToggleAutoSell',{Text='Autosell',
+Tooltip=
+[[Sells random fish in your inventory on inventory update while enabled.
+Talk to the Aquaticus to start while enabled.]]
+,Callback=o.toggleAutosell})u:AddButton('Teleport to the Fishing Rod',o.
 teleportToFishingRod)end u:AddDivider()do u:AddInput('InputTrinketValue',{Text=
 'Trinket to reroll',Tooltip=
 [[Script will try 500 times to roll this trinket.
