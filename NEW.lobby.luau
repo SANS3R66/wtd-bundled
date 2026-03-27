@@ -404,37 +404,37 @@ local d=a.u()local e=a.v()local f=a.w()local g={c,d,e,f}return g end function a.
 x()local b=a.cache.x if not b then b={c=__modImpl()}a.cache.x=b end return b.c
 end end do local function __modImpl()local b=a.e()local c=a.h()local d=a.r()
 local e=a.x()local f=game:GetService'Players'.LocalPlayer local g=(game:
-GetService'TeleportService':GetLocalPlayerTeleportData())or{
-'teleport data is nil'}local h=(f:FindFirstChild'Tower1')local i=(f:
-FindFirstChild'Tower2')local j=(f:FindFirstChild'Tower3')local k=(f:
-FindFirstChild'Tower4')local l=(f:FindFirstChild'Tower5')local m={}local n=false
-local o local p=c.new()local q=0 local r=os.clock()local s=false local function
-processFireServer(t,u)for v,w in e do if w.matchName(t)and w.matchArgs(u)then q
-+=1 w.encodeOpcode(p)p:writeF32(os.clock()-r)w.encode(p,u)r=os.clock()return end
-end end local function installHook()if not s then s=true local t=
-getrawmetatable(game)if t then o=hookfunction(t.__namecall,function(u,...)if n
-then local v=getnamecallmethod()if v=='FireServer'then local w={...}task.spawn(
-function()setthreadidentity(8)processFireServer(u.Name,w)end)end end return(o)(u
-,...)end)end end end local function removeHook()end function m.record()if n then
-return b.error'Already recording'end p:reset()q=0 p:writeU32(1835299959)p:
-writeU16(2)p:writeU16(0)p:writeShortString(g[1])p:writeShortString((f:
-GetAttribute'Accessory'))p:writeU32(h.Value)p:writeU32(i.Value)p:writeU32(j.
-Value)p:writeU32(k.Value)p:writeU32(l.Value)r=os.clock()installHook()n=true b.
-print'Started recording!'end function m.play(t,u)local v=`wtd-macroses/{t}`if
-not isfile(v)then error(`{t} is not a file..`)end local w=readfile(v)b.print(`Processing {
-t}..`)d.process(buffer.fromstring(w),u)end function m.stop(t)if not n then
-return b.error'Not recording currently'end if t==''then return b.error
-"File name shouldn't be blank"end removeHook()n=false local u=p:getOffset()p:
-seek(6)p:writeU16(q)p:seek(u)writefile(`wtd-macroses/{t}`,p:toString())p:reset()
-q=0 end function m.isRecording()return n end return m end function a.y()local b=
-a.cache.y if not b then b={c=__modImpl()}a.cache.y=b end return b.c end end do
-local function __modImpl()local b={}local c=Color3.fromRGB(0,230,0)local d=
-Color3.fromRGB(230,0,0)function b.bool2string(e)return e and'yes'or'no'end
-function b.bool2color(e)return e and c or d end function b.isSurvival()return
-game end return b end function a.z()local b=a.cache.z if not b then b={c=
-__modImpl()}a.cache.z=b end return b.c end end do local function __modImpl()
-local b="this toggle shouldn't ever be disabled"local c=a.y()local d=a.d()local
-e=a.g()local f=a.z()local g=game:GetService'RunService'local h=request{Url=
+GetService'TeleportService':GetLocalPlayerTeleportData())local h=(f:
+FindFirstChild'Tower1')local i=(f:FindFirstChild'Tower2')local j=(f:
+FindFirstChild'Tower3')local k=(f:FindFirstChild'Tower4')local l=(f:
+FindFirstChild'Tower5')local m={}local n=false local o local p=c.new()local q=0
+local r=os.clock()local s=false local function processFireServer(t,u)for v,w in
+e do if w.matchName(t)and w.matchArgs(u)then q+=1 w.encodeOpcode(p)p:writeF32(os
+.clock()-r)w.encode(p,u)r=os.clock()return end end end local function
+installHook()if not s then s=true local t=getrawmetatable(game)if t then o=
+hookfunction(t.__namecall,function(u,...)if n then local v=getnamecallmethod()if
+v=='FireServer'then local w={...}task.spawn(function()setthreadidentity(8)
+processFireServer(u.Name,w)end)end end return(o)(u,...)end)end end end
+local function removeHook()end function m.record()if n then return b.error
+'Already recording'end p:reset()q=0 p:writeU32(1835299959)p:writeU16(2)p:
+writeU16(0)p:writeShortString(g[1])p:writeShortString((f:GetAttribute'Accessory'
+))p:writeU32(h.Value)p:writeU32(i.Value)p:writeU32(j.Value)p:writeU32(k.Value)p:
+writeU32(l.Value)r=os.clock()installHook()n=true b.print'Started recording!'end
+function m.play(t,u)local v=`wtd-macroses/{t}`if not isfile(v)then error(`{t} is not a file..`
+)end local w=readfile(v)b.print(`Processing {t}..`)d.process(buffer.fromstring(w
+),u)end function m.stop(t)if not n then return b.error'Not recording currently'
+end if t==''then return b.error"File name shouldn't be blank"end removeHook()n=
+false local u=p:getOffset()p:seek(6)p:writeU16(q)p:seek(u)writefile(`wtd-macroses/{
+t}`,p:toString())p:reset()q=0 end function m.isRecording()return n end return m
+end function a.y()local b=a.cache.y if not b then b={c=__modImpl()}a.cache.y=b
+end return b.c end end do local function __modImpl()local b={}local c=Color3.
+fromRGB(0,230,0)local d=Color3.fromRGB(230,0,0)function b.bool2string(e)return e
+and'yes'or'no'end function b.bool2color(e)return e and c or d end function b.
+isSurvival()return game end return b end function a.z()local b=a.cache.z if not
+b then b={c=__modImpl()}a.cache.z=b end return b.c end end do local function
+__modImpl()local b="this toggle shouldn't ever be disabled"local c=a.y()local d=
+a.d()local e=a.g()local f=a.z()local g=game:GetService'RunService'local h=
+request{Url=
 [[https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua]],
 Method='GET'}.Body local i,j=loadstring(h)assert(i,`Obsidian UI Library failed to compile: {
 j}`)local k,l=pcall(i)assert(k,`Coulnd't run Obisidan Library: {l}`)assert(l,
