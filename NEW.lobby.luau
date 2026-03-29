@@ -233,48 +233,50 @@ function c.seek(d,e)d._offset=e end function c.getOffset(d)return d._offset end
 function c._ensure(d,e)if d._offset+e>d._size then local f=d._size*2 while d.
 _offset+e>f do f*=2 end local g=buffer.create(f)buffer.copy(g,0,d._buf,0,d.
 _offset)d._buf=g d._size=f end end function c.writeU8(d,e)d:_ensure(1)buffer.
-writeu8(d._buf,d._offset,e)d._offset+=1 end function c.writeU16(d,e)d:_ensure(2)
-buffer.writeu16(d._buf,d._offset,e)d._offset+=2 end function c.writeU32(d,e)d:
-_ensure(4)buffer.writeu32(d._buf,d._offset,e)d._offset+=4 end function c.
-writeF32(d,e)d:_ensure(4)buffer.writef32(d._buf,d._offset,e)d._offset+=4 end
-function c.writeShortString(d,e)local f=string.len(e)d:_ensure(2+f)d:writeU16(f)
-buffer.writestring(d._buf,d._offset,e)d._offset+=f end function c.writeVector3(d
-,e)d:writeF32(e.X)d:writeF32(e.Y)d:writeF32(e.Z)end function c.toBuffer(d)local
-e=buffer.create(d._offset)buffer.copy(e,0,d._buf,0,d._offset)return e end
-function c.toString(d)return buffer.tostring(d:toBuffer())end return c end
-function a.h()local b=a.cache.h if not b then b={c=__modImpl()}a.cache.h=b end
-return b.c end end do local function __modImpl()local b={}b.__index=b function b
-.new(c)return setmetatable({_buf=c,_offset=0,_size=buffer.len(c)},b)end function
-b.reset(c)c._offset=0 buffer.fill(c._buf,0,0,c._size)end function b.seek(c,d)c.
-_offset=d end function b.getOffset(c)return c._offset end function b._ensure(c,d
-)if c._offset+d>c._size then error(`Buffer out of bounds! Size: {c._size}, offset: {
-c._offset} and ensure {d} bytes`)end end function b.readU8(c)c:_ensure(1)local d
-=buffer.readu8(c._buf,c._offset)c._offset+=1 return d end function b.readU16(c)c
-:_ensure(2)local d=buffer.readu16(c._buf,c._offset)c._offset+=2 return d end
-function b.readU32(c)c:_ensure(4)local d=buffer.readu32(c._buf,c._offset)c.
-_offset+=4 return d end function b.readF32(c)c:_ensure(4)local d=buffer.readf32(
-c._buf,c._offset)c._offset+=4 return d end function b.readShortString(c)c:
-_ensure(2)local d=c:readU16()c:_ensure(d)local e=buffer.readstring(c._buf,c.
-_offset,d)c._offset+=d return e end function b.readVector3(c)local d=c:readF32()
-local e=c:readF32()local f=c:readF32()return Vector3.new(d,e,f)end function b.
-toBuffer(c)local d=buffer.create(c._offset)buffer.copy(d,0,c._buf,0,c._offset)
-return d end function b.toString(c)return buffer.tostring(c:toBuffer())end
-return b end function a.i()local b=a.cache.i if not b then b={c=__modImpl()}a.
-cache.i=b end return b.c end end do local function __modImpl()local b=2 local c=
-1835299959 local d=a.i()local e={}function e.decodeMeta(f)local g=f:readU32()
-local h=f:readU16()local i=f:readU16()return{magic=g,version=h,actionsAmount=i}
-end function e.decodeLoadout(f)local g=f:readShortString()local h=f:
-readShortString()local i=f:readU32()local j=f:readU32()local k=f:readU32()local
-l=f:readU32()local m=f:readU32()return{map=g,accessory=h,Tower1=i,Tower2=j,
-Tower3=k,Tower4=l,Tower5=m}end function e.getEncodingVersion()return b end
-function e.getMagic()return c end return e end function a.j()local b=a.cache.j
-if not b then b={c=__modImpl()}a.cache.j=b end return b.c end end do
-local function __modImpl()local b=game:GetService'Players'local c=b.LocalPlayer
-or b.PlayerAdded:Wait()local d=(c:WaitForChild'PlayerGui')local e=(d:
-WaitForChild'AwesomeGUI')local f=(e:FindFirstChild'Towers')local g={}local h={
-Tower1=1,Tower2=2,Tower3=3,Tower4=4,Tower5=5,Tower6=6,Tower7=7}local i={}for j,k
-in h do i[k]=j end function g.fromName(j)return h[j]or 0 end function g.
-fromIndex(j)return i[j]or''end function g.buttonFromName(j)return(f:
+writeu8(d._buf,d._offset,e)d._offset+=1 end function c.writeBool(d,e)d:_ensure(1
+)d:writeU8(e and 1 or 0)end function c.writeU16(d,e)d:_ensure(2)buffer.writeu16(
+d._buf,d._offset,e)d._offset+=2 end function c.writeU32(d,e)d:_ensure(4)buffer.
+writeu32(d._buf,d._offset,e)d._offset+=4 end function c.writeF32(d,e)d:_ensure(4
+)buffer.writef32(d._buf,d._offset,e)d._offset+=4 end function c.writeShortString
+(d,e)local f=string.len(e)if f>0 then d:_ensure(2+f)d:writeU16(f)buffer.
+writestring(d._buf,d._offset,e)d._offset+=f else d:writeU16(0)end end function c
+.writeVector3(d,e)d:writeF32(e.X)d:writeF32(e.Y)d:writeF32(e.Z)end function c.
+toBuffer(d)local e=buffer.create(d._offset)buffer.copy(e,0,d._buf,0,d._offset)
+return e end function c.toString(d)return buffer.tostring(d:toBuffer())end
+return c end function a.h()local b=a.cache.h if not b then b={c=__modImpl()}a.
+cache.h=b end return b.c end end do local function __modImpl()local b={}b.
+__index=b function b.new(c)return setmetatable({_buf=c,_offset=0,_size=buffer.
+len(c)},b)end function b.reset(c)c._offset=0 buffer.fill(c._buf,0,0,c._size)end
+function b.seek(c,d)c._offset=d end function b.getOffset(c)return c._offset end
+function b._ensure(c,d)if c._offset+d>c._size then error(`Buffer out of bounds! Size: {
+c._size}, offset: {c._offset} and ensure {d} bytes`)end end function b.readU8(c)
+c:_ensure(1)local d=buffer.readu8(c._buf,c._offset)c._offset+=1 return d end
+function b.readBool(c)local d=c:readU8()return d==1 and true or false end
+function b.readU16(c)c:_ensure(2)local d=buffer.readu16(c._buf,c._offset)c.
+_offset+=2 return d end function b.readU32(c)c:_ensure(4)local d=buffer.readu32(
+c._buf,c._offset)c._offset+=4 return d end function b.readF32(c)c:_ensure(4)
+local d=buffer.readf32(c._buf,c._offset)c._offset+=4 return d end function b.
+readShortString(c)c:_ensure(2)local d=c:readU16()if d==0 then return''end c:
+_ensure(d)local e=buffer.readstring(c._buf,c._offset,d)c._offset+=d return e end
+function b.readVector3(c)local d=c:readF32()local e=c:readF32()local f=c:
+readF32()return Vector3.new(d,e,f)end function b.toBuffer(c)local d=buffer.
+create(c._offset)buffer.copy(d,0,c._buf,0,c._offset)return d end function b.
+toString(c)return buffer.tostring(c:toBuffer())end return b end function a.i()
+local b=a.cache.i if not b then b={c=__modImpl()}a.cache.i=b end return b.c end
+end do local function __modImpl()local b=2 local c=1835299959 local d=a.i()local
+e={}function e.decodeMeta(f)local g=f:readU32()local h=f:readU16()local i=f:
+readU16()return{magic=g,version=h,actionsAmount=i}end function e.decodeLoadout(f
+)local g=f:readShortString()local h=f:readShortString()local i=f:readU32()local
+j=f:readU32()local k=f:readU32()local l=f:readU32()local m=f:readU32()return{map
+=g,accessory=h,Tower1=i,Tower2=j,Tower3=k,Tower4=l,Tower5=m}end function e.
+getEncodingVersion()return b end function e.getMagic()return c end return e end
+function a.j()local b=a.cache.j if not b then b={c=__modImpl()}a.cache.j=b end
+return b.c end end do local function __modImpl()local b=game:GetService'Players'
+local c=b.LocalPlayer or b.PlayerAdded:Wait()local d=(c:WaitForChild'PlayerGui')
+local e=(d:WaitForChild'AwesomeGUI')local f=(e:FindFirstChild'Towers')local g={}
+local h={Tower1=1,Tower2=2,Tower3=3,Tower4=4,Tower5=5,Tower6=6,Tower7=7}local i=
+{}for j,k in h do i[k]=j end function g.fromName(j)return h[j]or 0 end function
+g.fromIndex(j)return i[j]or''end function g.buttonFromName(j)return(f:
 FindFirstChild(j))end function g.getSlotsNames()return h end function g.
 getPlayerTowers()return{Tower1=(c:FindFirstChild'Tower1'),Tower2=(c:
 FindFirstChild'Tower2'),Tower3=(c:FindFirstChild'Tower3'),Tower4=(c:
@@ -303,30 +305,31 @@ function a.k()local b=a.cache.k if not b then b={c=__modImpl()}a.cache.k=b end
 return b.c end end do local function __modImpl()local b=a.i()return{}end
 function a.l()local b=a.cache.l if not b then b={c=__modImpl()}a.cache.l=b end
 return b.c end end do local function __modImpl()local b={RESERVED_0=0,
-PlaceIndexUnit=1,UpgradeIndexUnit=2,ChangeUnitTargetting=3,DestroyUnit=4}return
-table.freeze(b)end function a.m()local b=a.cache.m if not b then b={c=__modImpl(
-)}a.cache.m=b end return b.c end end do local function __modImpl()local b=game:
-GetService'Players'local c=game:GetService'RunService'local d=game:GetService
-'ReplicatedStorage'local e=b.LocalPlayer or b.PlayerAdded:Wait()local f local g=
-a.l()local h=a.m()local i=a.k()local j local function getCash()if f and f.Parent
-then return f end local k=e:FindFirstChild'CASH'if k and k:IsA'NumberValue'then
-f=k return k end return nil end local function getSpawnUnit()if j and j.Parent
-then return j end local k=d:FindFirstChild'SpawnUnit'if k and k:IsA'RemoteEvent'
-then j=k return k end return nil end local k={match=function(k)return k==h.
-PlaceIndexUnit end,process=function(k)local l=i.fromIndex(k:readU8())local m=k:
-readU8()local n=k:readVector3()task.defer(function()local o=getCash()local p=
-getSpawnUnit()if not o or not p then return end local q=i.buttonFromName(l)local
-r=(q:FindFirstChild'Cooldown')local s=(q:FindFirstChild'RealCost')while r.Value>
-0 do c.Heartbeat:Wait()end while o.Value<s.Value do o.Changed:Wait()end p:
-FireServer('lol',q,m,n)end)end}return k end function a.n()local b=a.cache.n if
-not b then b={c=__modImpl()}a.cache.n=b end return b.c end end do local function
-__modImpl()local b=game:GetService'ReplicatedStorage'local c=a.l()local d=a.m()
-local e=(b:FindFirstChild'ChangeUnitTargetting')local f=(workspace:
-FindFirstChild'BluTeamUnits')local g={match=function(g)return g==d.DestroyUnit
-end,process=function(g)local h=g:readVector3()local i local j=math.huge for k,l
-in f:GetChildren()do local m=(l:FindFirstChild'HumanoidRootPart')if m then local
-n=(m.Position-h).Magnitude if n<=0.5 and n<j then j=n i=l end end end if i then
-e:FireServer(i,true)else warn(`[ChangeUnitTargetting] Couldn't find closest unit to destroy!`
+PlaceIndexUnit=1,UpgradeIndexUnit=2,ChangeUnitTargetting=3,DestroyUnit=4,
+ActivateSingleAbility=5,MultiAbilityAndFieldUpgrade=6}return table.freeze(b)end
+function a.m()local b=a.cache.m if not b then b={c=__modImpl()}a.cache.m=b end
+return b.c end end do local function __modImpl()local b=game:GetService'Players'
+local c=game:GetService'RunService'local d=game:GetService'ReplicatedStorage'
+local e=b.LocalPlayer or b.PlayerAdded:Wait()local f local g=a.l()local h=a.m()
+local i=a.k()local j local function getCash()if f and f.Parent then return f end
+local k=e:FindFirstChild'CASH'if k and k:IsA'NumberValue'then f=k return k end
+return nil end local function getSpawnUnit()if j and j.Parent then return j end
+local k=d:FindFirstChild'SpawnUnit'if k and k:IsA'RemoteEvent'then j=k return k
+end return nil end local k={match=function(k)return k==h.PlaceIndexUnit end,
+process=function(k)local l=i.fromIndex(k:readU8())local m=k:readU8()local n=k:
+readVector3()task.defer(function()local o=getCash()local p=getSpawnUnit()if not
+o or not p then return end local q=i.buttonFromName(l)local r=(q:FindFirstChild
+'Cooldown')local s=(q:FindFirstChild'RealCost')while r.Value>0 do c.Heartbeat:
+Wait()end while o.Value<s.Value do o.Changed:Wait()end p:FireServer('lol',q,m,n)
+end)end}return k end function a.n()local b=a.cache.n if not b then b={c=
+__modImpl()}a.cache.n=b end return b.c end end do local function __modImpl()
+local b=game:GetService'ReplicatedStorage'local c=a.l()local d=a.m()local e=(b:
+FindFirstChild'ChangeUnitTargetting')local f=(workspace:FindFirstChild
+'BluTeamUnits')local g={match=function(g)return g==d.DestroyUnit end,process=
+function(g)local h=g:readVector3()local i local j=math.huge for k,l in f:
+GetChildren()do local m=(l:FindFirstChild'HumanoidRootPart')if m then local n=(m
+.Position-h).Magnitude if n<0.5 and n<j then j=n i=l end end end if i then e:
+FireServer(i,true)else warn(`[ChangeUnitTargetting] Couldn't find closest unit to destroy!`
 )end end}return g end function a.o()local b=a.cache.o if not b then b={c=
 __modImpl()}a.cache.o=b end return b.c end end do local function __modImpl()
 local b=game:GetService'Players'local c=game:GetService'RunService'local d=game:
@@ -348,24 +351,56 @@ FindFirstChild'BluTeamUnits')local g={match=function(g)return g==d.
 ChangeUnitTargetting end,process=function(g)local h=g:readShortString()local i=g
 :readVector3()local j local k=math.huge for l,m in f:GetChildren()do local n=(m:
 FindFirstChild'HumanoidRootPart')if n then local o=(n.Position-i).Magnitude if o
-<=0.5 and o<k then k=o j=m end end end if j then e:FireServer(j,'SetTarget',{h})
+<0.5 and o<k then k=o j=m end end end if j then e:FireServer(j,'SetTarget',{h})
 else warn(`[ChangeUnitTargetting] Couldn't find closest unit to target with {h}!`
 )end end}return g end function a.q()local b=a.cache.q if not b then b={c=
 __modImpl()}a.cache.q=b end return b.c end end do local function __modImpl()
-local b=a.l()local c=a.n()local d=a.o()local e=a.p()local f=a.q()local g={c,d,e,
-f}return g end function a.r()local b=a.cache.r if not b then b={c=__modImpl()}a.
-cache.r=b end return b.c end end do local function __modImpl()local b=a.i()local
-c=a.k()local d=a.j()local e=a.r()local f=game:GetService'Players'.LocalPlayer
-local g=(game:GetService'TeleportService':GetLocalPlayerTeleportData())or{
-'teleport data is nil'}local h=g[1]local i=c.TowerList()local j={}function j.
-checkMeta(k)if k.magic~=d.getMagic()then error
-'Magic mismatch! Provided file is likely not macros.'end if k.version~=d.
-getEncodingVersion()then error'Version mismatch!'end end function j.checkLoadout
-(k)local l=true if k.map~=g[1]then warn(`Map should be {k.map}`)l=false end
-local m=(c.getPlayerTowers())local n=k for o,p in m do if n[o]~=p.Value then
-warn(`{o} should be {i[n[o] ]} (ID: {n[o]})`)l=false end end if k.accessory~=f:
-GetAttribute'Accessory'then warn(`Accessory should be {k.accessory}`)l=false end
-if not l then error
+local b=game:GetService'ReplicatedStorage'local c=a.l()local d=a.m()local e=(b:
+FindFirstChild'ChangeUnitTargetting')local f=(workspace:FindFirstChild
+'BluTeamUnits')local g={match=function(g)return g==d.ActivateSingleAbility end,
+process=function(g)local h=g:readVector3()local i local j=math.huge for k,l in f
+:GetChildren()do local m=(l:FindFirstChild'HumanoidRootPart')if m then local n=(
+m.Position-h).Magnitude if n<0.5 and n<j then j=n i=l end end end if i then if
+type(i:GetAttribute'AbilityTime')=='number'then task.wait((i:GetAttribute
+'AbilityTime'))e:FireServer(i,'Ability')else warn(`[ActivateSingleAbility] Found unit without ability time!`
+)end else warn(`[ActivateSingleAbility] Couldn't find closest unit to use single ability!`
+)end end}return g end function a.r()local b=a.cache.r if not b then b={c=
+__modImpl()}a.cache.r=b end return b.c end end do local function __modImpl()
+local b=game:GetService'Players'local c=game:GetService'ReplicatedStorage'local
+d=a.l()local e=a.m()local f=(c:FindFirstChild'AbilityUnit')local g=(workspace:
+FindFirstChild'BluTeamUnits')local h=b.LocalPlayer or b.PlayerAdded:Wait()
+local function parsePrice(i)local j=i:match'%[%$([%d%.]+[kKmMbB]?)%]'if not j
+then return nil end local k={k=1000,m=100000,b=1000000000}local l=j:sub(-1):
+lower()local m=k[l]local n if m then n=j:sub(1,-2)else n=j m=1 end local o=
+tonumber(n)if not o then return nil end return o*m end local i local function
+getCash()if i and i.Parent then return i end local j=h:FindFirstChild'CASH'if j
+and j:IsA'NumberValue'then i=j return j end return nil end local j={match=
+function(j)return j==e.MultiAbilityAndFieldUpgrade end,process=function(j)local
+k=j:readVector3()local l=j:readShortString()local m=j:readShortString()local n=
+string.len(m)>0 local o local p=math.huge for q,r in g:GetChildren()do local s=(
+r:FindFirstChild'HumanoidRootPart')if s then local t=(s.Position-k).Magnitude if
+t<0.5 and t<p then p=t o=r end end end if o then task.defer(function()local q=
+getCash()if not q then return end if not n then if type(o:GetAttribute(l))==
+'number'then task.wait((o:GetAttribute(l)))else warn(`[MultiAbilityAndFieldUpgrade] Found unit without ability time!`
+)end else local r=(o:GetAttribute(m))local s=parsePrice(r)if not s then error(`[MultiAbilityAndFieldUpgrade] Couldn't parse '{
+r}' for {o.Name}`)end while q.Value<s do q.Changed:Wait()end end f:FireServer(o,
+l,m)end)else warn(`[MultiAbilityAndFieldUpgrade] Couldn't find closest unit to use ability!`
+)end end}return j end function a.s()local b=a.cache.s if not b then b={c=
+__modImpl()}a.cache.s=b end return b.c end end do local function __modImpl()
+local b=a.l()local c=a.n()local d=a.o()local e=a.p()local f=a.q()local g=a.r()
+local h=a.s()local i={c,d,e,f,g,h}return i end function a.t()local b=a.cache.t
+if not b then b={c=__modImpl()}a.cache.t=b end return b.c end end do
+local function __modImpl()local b=a.i()local c=a.k()local d=a.j()local e=a.t()
+local f=game:GetService'Players'.LocalPlayer local g=(game:GetService
+'TeleportService':GetLocalPlayerTeleportData())or{'teleport data is nil'}local h
+=g[1]local i=c.TowerList()local j={}function j.checkMeta(k)if k.magic~=d.
+getMagic()then error'Magic mismatch! Provided file is likely not macros.'end if
+k.version~=d.getEncodingVersion()then error'Version mismatch!'end end function j
+.checkLoadout(k)local l=true if k.map~=h then warn(`Map should be {k.map}`)l=
+false end local m=(c.getPlayerTowers())local n=k for o,p in m do if n[o]~=p.
+Value then warn(`{o} should be {i[n[o] ]} (ID: {n[o]})`)l=false end end if k.
+accessory~=f:GetAttribute'Accessory'then warn(`Accessory should be {k.accessory}`
+)l=false end if not l then error
 [[Your loadout doesn't match for this macros. Check console for details.]]end
 end function j.process(k,l)local m=b.new(k)local n=d.decodeMeta(m)local o=d.
 decodeLoadout(m)j.checkMeta(n)local p=n.actionsAmount print(`[Decoder] total actions: {
@@ -373,75 +408,88 @@ p}`)if not l then j.checkLoadout(o)end local q=-1 for r=1,p do local s=m:
 readU16()local t=false for u,v in e do if v.match(s)then local w=m:readF32()task
 .wait(w)v.process(m)t=true break end end if not t then error(`Invalid opcode number {
 s}! Possibly previous action (opcode: {q}) didn't fully read the stream?`)end q=
-s end print(`Successfully processed {p} actions!`)end return j end function a.s(
-)local b=a.cache.s if not b then b={c=__modImpl()}a.cache.s=b end return b.c end
-end do local function __modImpl()local b=a.h()return{}end function a.t()local b=
-a.cache.t if not b then b={c=__modImpl()}a.cache.t=b end return b.c end end do
-local function __modImpl()local b=a.t()local c=a.m()local d=a.k()local e={
+s end print(`Successfully processed {p} actions!`)end return j end function a.u(
+)local b=a.cache.u if not b then b={c=__modImpl()}a.cache.u=b end return b.c end
+end do local function __modImpl()local b=a.h()return{}end function a.v()local b=
+a.cache.v if not b then b={c=__modImpl()}a.cache.v=b end return b.c end end do
+local function __modImpl()local b=a.v()local c=a.m()local d=a.k()local e={
 matchName=function(e)return e=='SpawnUnit'end,matchArgs=function(e)return e[1]==
 'lol'end,encodeOpcode=function(e)e:writeU16(c.PlaceIndexUnit)end,encode=function
 (e,f)e:writeU8(d.fromName(f[2].Name))e:writeU8(f[3])e:writeVector3(f[4])end}
-return e end function a.u()local b=a.cache.u if not b then b={c=__modImpl()}a.
-cache.u=b end return b.c end end do local function __modImpl()local b=a.t()local
+return e end function a.w()local b=a.cache.w if not b then b={c=__modImpl()}a.
+cache.w=b end return b.c end end do local function __modImpl()local b=a.v()local
 c=a.m()local d={matchName=function(d)return d=='ChangeUnitTargetting'end,
 matchArgs=function(d)return d[2]==true end,encodeOpcode=function(d)d:writeU16(c.
 DestroyUnit)end,encode=function(d,e)local f=(e[1])local g=((f:FindFirstChild
-'HumanoidRootPart')).Position d:writeVector3(g)end}return d end function a.v()
-local b=a.cache.v if not b then b={c=__modImpl()}a.cache.v=b end return b.c end
-end do local function __modImpl()local b=a.t()local c=a.m()local d=a.k()local e=
+'HumanoidRootPart')).Position d:writeVector3(g)end}return d end function a.x()
+local b=a.cache.x if not b then b={c=__modImpl()}a.cache.x=b end return b.c end
+end do local function __modImpl()local b=a.v()local c=a.m()local d=a.k()local e=
 {matchName=function(e)return e=='UpgradeTower'end,matchArgs=function(e)return e[
 1]=='lol'end,encodeOpcode=function(e)e:writeU16(c.UpgradeIndexUnit)end,encode=
-function(e,f)e:writeU8(d.fromName(f[2].Name))end}return e end function a.w()
-local b=a.cache.w if not b then b={c=__modImpl()}a.cache.w=b end return b.c end
-end do local function __modImpl()local b=a.t()local c=a.m()local d={matchName=
+function(e,f)e:writeU8(d.fromName(f[2].Name))end}return e end function a.y()
+local b=a.cache.y if not b then b={c=__modImpl()}a.cache.y=b end return b.c end
+end do local function __modImpl()local b=a.v()local c=a.m()local d={matchName=
 function(d)return d=='ChangeUnitTargetting'end,matchArgs=function(d)return d[2]
 =='SetTarget'end,encodeOpcode=function(d)d:writeU16(c.ChangeUnitTargetting)end,
 encode=function(d,e)local f=(e[1])local g=(e[3][1])local h=((f:FindFirstChild
 'HumanoidRootPart')).Position d:writeShortString(g)d:writeVector3(h)end}return d
-end function a.x()local b=a.cache.x if not b then b={c=__modImpl()}a.cache.x=b
-end return b.c end end do local function __modImpl()local b=a.t()local c=a.u()
-local d=a.v()local e=a.w()local f=a.x()local g={c,d,e,f}return g end function a.
-y()local b=a.cache.y if not b then b={c=__modImpl()}a.cache.y=b end return b.c
-end end do local function __modImpl()local b=a.e()local c=a.h()local d=a.i()
-local e=a.j()local f=a.s()local g=a.y()local h=game:GetService'Players'local i=
-game:GetService'TeleportService'local j=game:GetService'ReplicatedStorage'local
-k=h.LocalPlayer local l=(i:GetLocalPlayerTeleportData())local m=(j:
-FindFirstChild'EquipTower')local n=(j:FindFirstChild'AccessoryHandle')local o=(k
-:FindFirstChild'Tower1')local p=(k:FindFirstChild'Tower2')local q=(k:
-FindFirstChild'Tower3')local r=(k:FindFirstChild'Tower4')local s=(k:
-FindFirstChild'Tower5')local t={}local u=false local v local w=c.new()local x=0
-local y=os.clock()local z=false local function processFireServer(A,B)for C,D in
-g do if D.matchName(A)and D.matchArgs(B)then x+=1 D.encodeOpcode(w)w:writeF32(os
-.clock()-y)D.encode(w,B)y=os.clock()return end end end local function
-installHook()if not z then z=true local A=getrawmetatable(game)if A then v=
-hookfunction(A.__namecall,function(B,...)if u then local C=getnamecallmethod()if
-C=='FireServer'then local D={...}task.spawn(function()setthreadidentity(8)
-processFireServer(B.Name,D)end)end end return(v)(B,...)end)end end end
-local function removeHook()end function t.record()if u then return b.error
-'Already recording'end w:reset()x=0 w:writeU32(1835299959)w:writeU16(2)w:
-writeU16(0)w:writeShortString(l[1])w:writeShortString((k:GetAttribute'Accessory'
-))w:writeU32(o.Value)w:writeU32(p.Value)w:writeU32(q.Value)w:writeU32(r.Value)w:
-writeU32(s.Value)y=os.clock()installHook()u=true b.print'Started recording!'end
-function t.play(A,B)local C=`wtd-macroses/{A}`if not isfile(C)then error(`{A} is not a file..`
-)end local D=readfile(C)b.print(`Processing {A}..`)f.process(buffer.fromstring(D
-),B)end function t.stop(A)if not u then return b.error'Not recording currently'
-end if A==''then return b.error"File name shouldn't be blank"end removeHook()u=
-false local B=w:getOffset()w:seek(6)w:writeU16(x)w:seek(B)writefile(`wtd-macroses/{
-A}`,w:toString())w:reset()x=0 end function t.isRecording()return u end function
-t.equipLoadout(A)local B=`wtd-macroses/{A}`if not isfile(B)then error(`{A} is not a file..`
-)end local C=d.new(buffer.fromstring(readfile(B)))local D=e.decodeMeta(C)if D.
-magic~=e.getMagic()then error(`Not a macros file.`)end local E=e.decodeLoadout(C
-)local F=E for G=1,5 do m:FireServer('Unequip',`Tower{G}`)task.wait(0.5)end task
-.wait(1)for G=1,5 do m:FireServer('Equip',F[`Tower{G}`])task.wait(0.5)end n:
-FireServer('Equip',E.accessory)end return t end function a.z()local b=a.cache.z
-if not b then b={c=__modImpl()}a.cache.z=b end return b.c end end do
-local function __modImpl()local b={}local c=Color3.fromRGB(0,230,0)local d=
-Color3.fromRGB(230,0,0)function b.bool2string(e)return e and'yes'or'no'end
-function b.bool2color(e)return e and c or d end function b.isSurvival()return
-game end return b end function a.A()local b=a.cache.A if not b then b={c=
-__modImpl()}a.cache.A=b end return b.c end end do local function __modImpl()
-local b="this toggle shouldn't ever be disabled"local c=a.z()local d=a.d()local
-e=a.g()local f=a.A()local g=game:GetService'RunService'local h=request{Url=
+end function a.z()local b=a.cache.z if not b then b={c=__modImpl()}a.cache.z=b
+end return b.c end end do local function __modImpl()local b=a.v()local c=a.m()
+local d={matchName=function(d)return d=='ChangeUnitTargetting'end,matchArgs=
+function(d)return d[2]=='Ability'end,encodeOpcode=function(d)d:writeU16(c.
+ActivateSingleAbility)end,encode=function(d,e)local f=(e[1])local g=((f:
+FindFirstChild'HumanoidRootPart')).Position d:writeVector3(g)end}return d end
+function a.A()local b=a.cache.A if not b then b={c=__modImpl()}a.cache.A=b end
+return b.c end end do local function __modImpl()local b=a.v()local c=a.m()local
+d={matchName=function(d)return d=='AbilityUnit'end,matchArgs=function(d)return
+true end,encodeOpcode=function(d)d:writeU16(c.MultiAbilityAndFieldUpgrade)end,
+encode=function(d,e)local f=(e[1])local g=((f:FindFirstChild'HumanoidRootPart'))
+.Position d:writeVector3(g)d:writeShortString(e[2])d:writeShortString(e[3]or'')
+end}return d end function a.B()local b=a.cache.B if not b then b={c=__modImpl()}
+a.cache.B=b end return b.c end end do local function __modImpl()local b=a.v()
+local c=a.w()local d=a.x()local e=a.y()local f=a.z()local g=a.A()local h=a.B()
+local i={c,d,e,f,g,h}return i end function a.C()local b=a.cache.C if not b then
+b={c=__modImpl()}a.cache.C=b end return b.c end end do local function __modImpl(
+)local b=a.e()local c=a.h()local d=a.i()local e=a.j()local f=a.u()local g=a.C()
+local h=game:GetService'Players'local i=game:GetService'TeleportService'local j=
+game:GetService'ReplicatedStorage'local k=h.LocalPlayer local l=(i:
+GetLocalPlayerTeleportData())local m=(j:FindFirstChild'EquipTower')local n=(j:
+FindFirstChild'AccessoryHandle')local o=(k:FindFirstChild'Tower1')local p=(k:
+FindFirstChild'Tower2')local q=(k:FindFirstChild'Tower3')local r=(k:
+FindFirstChild'Tower4')local s=(k:FindFirstChild'Tower5')local t={}local u=false
+local v local w=c.new()local x=0 local y=os.clock()local z=false local function
+processFireServer(A,B)for C,D in g do if D.matchName(A)and D.matchArgs(B)then x
++=1 D.encodeOpcode(w)w:writeF32(os.clock()-y)D.encode(w,B)y=os.clock()return end
+end end local function installHook()if not z then z=true local A=
+getrawmetatable(game)if A then v=hookfunction(A.__namecall,function(B,...)if u
+then local C=getnamecallmethod()if C=='FireServer'then local D={...}task.spawn(
+function()setthreadidentity(8)processFireServer(B.Name,D)end)end end return(v)(B
+,...)end)end end end local function removeHook()end function t.record()if u then
+return b.error'Already recording'end w:reset()x=0 w:writeU32(1835299959)w:
+writeU16(2)w:writeU16(0)w:writeShortString(l[1])w:writeShortString((k:
+GetAttribute'Accessory'))w:writeU32(o.Value)w:writeU32(p.Value)w:writeU32(q.
+Value)w:writeU32(r.Value)w:writeU32(s.Value)y=os.clock()installHook()u=true b.
+print'Started recording!'end function t.play(A,B)local C=`wtd-macroses/{A}`if
+not isfile(C)then error(`{A} is not a file..`)end local D=readfile(C)b.print(`Processing {
+A}..`)f.process(buffer.fromstring(D),B)end function t.stop(A)if not u then
+return b.error'Not recording currently'end if A==''then return b.error
+"File name shouldn't be blank"end removeHook()u=false local B=w:getOffset()w:
+seek(6)w:writeU16(x)w:seek(B)writefile(`wtd-macroses/{A}`,w:toString())w:reset()
+x=0 end function t.isRecording()return u end function t.equipLoadout(A)local B=`wtd-macroses/{
+A}`if not isfile(B)then error(`{A} is not a file..`)end local C=d.new(buffer.
+fromstring(readfile(B)))local D=e.decodeMeta(C)if D.magic~=e.getMagic()then
+error(`Not a macros file.`)end local E=e.decodeLoadout(C)local F=E for G=1,5 do
+m:FireServer('Unequip',`Tower{G}`)task.wait(0.5)end task.wait(1)for G=1,5 do m:
+FireServer('Equip',F[`Tower{G}`])task.wait(0.5)end n:FireServer('Equip',E.
+accessory)end return t end function a.D()local b=a.cache.D if not b then b={c=
+__modImpl()}a.cache.D=b end return b.c end end do local function __modImpl()
+local b={}local c=Color3.fromRGB(0,230,0)local d=Color3.fromRGB(230,0,0)function
+b.bool2string(e)return e and'yes'or'no'end function b.bool2color(e)return e and
+c or d end function b.isSurvival()return game end return b end function a.E()
+local b=a.cache.E if not b then b={c=__modImpl()}a.cache.E=b end return b.c end
+end do local function __modImpl()local b=
+"this toggle shouldn't ever be disabled"local c=a.D()local d=a.d()local e=a.g()
+local f=a.E()local g=game:GetService'RunService'local h=request{Url=
 [[https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua]],
 Method='GET'}.Body local i,j=loadstring(h)assert(i,`Obsidian UI Library failed to compile: {
 j}`)local k,l=pcall(i)assert(k,`Coulnd't run Obisidan Library: {l}`)assert(l,
@@ -612,10 +660,10 @@ Tooltip=
 Same thing for accessory.]]
 ,Func=function()local v,w=pcall(c.equipLoadout,u.Value)if not v then l:Notify{
 Title='Failed to equip loadout',Description=w or'unknown reason',Time=14}end end
-}end end Interface_settingsTab(q)end return m end function a.B()local b=a.cache.
-B if not b then b={c=__modImpl()}a.cache.B=b end return b.c end end end local b=
+}end end Interface_settingsTab(q)end return m end function a.F()local b=a.cache.
+F if not b then b={c=__modImpl()}a.cache.F=b end return b.c end end end local b=
 5656754541 local c=game.PlaceId==b local d if c then d=a.a()else d=a.c()end
-local e=a.e()local f=a.g()local g=a.B()local h,i=pcall(function()f.
+local e=a.e()local f=a.g()local g=a.F()local h,i=pcall(function()f.
 identityManipulation.test()f.hookmetamethod.test()f.hookfunction.test()f.
 filesystem.test()if d then d.init()else error'Logic is nil!'end g.init()return
 nil end)if not h then error(`Failed to init script: {i}`)end print
