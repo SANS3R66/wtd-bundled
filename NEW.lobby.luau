@@ -223,45 +223,45 @@ end function g.hookmetamethod.isAvailable()return j end function g.
 hookmetamethod.test()if not j then return end if h.skip_advanced_tests then warn
 [[env.skip_advanced_tests is true. Skipped meta methods tests.]]end local n=
 false local o o=hookmetamethod(game,'__namecall',function(...)if
-getnamecallmethod()=='Shutdown'then n=true return else return o(...)end end)game
-:Shutdown()hookmetamethod(game,'__namecall',o)j=n end return g end function a.g(
-)local b=a.cache.g if not b then b={c=__modImpl()}a.cache.g=b end return b.c end
-end do local function __modImpl()local b=8192 local c={}c.__index=c function c.
-new(d)local e=d or b return setmetatable({_buf=buffer.create(e),_offset=0,_size=
-e},c)end function c.reset(d)d._offset=0 buffer.fill(d._buf,0,0,d._size)end
-function c.seek(d,e)d._offset=e end function c.getOffset(d)return d._offset end
-function c._ensure(d,e)if d._offset+e>d._size then local f=d._size*2 while d.
-_offset+e>f do f*=2 end local g=buffer.create(f)buffer.copy(g,0,d._buf,0,d.
-_offset)d._buf=g d._size=f end end function c.writeU8(d,e)d:_ensure(1)buffer.
-writeu8(d._buf,d._offset,e)d._offset+=1 end function c.writeBool(d,e)d:_ensure(1
-)d:writeU8(e and 1 or 0)end function c.writeU16(d,e)d:_ensure(2)buffer.writeu16(
-d._buf,d._offset,e)d._offset+=2 end function c.writeU32(d,e)d:_ensure(4)buffer.
-writeu32(d._buf,d._offset,e)d._offset+=4 end function c.writeF32(d,e)d:_ensure(4
-)buffer.writef32(d._buf,d._offset,e)d._offset+=4 end function c.writeShortString
-(d,e)local f=string.len(e)if f>0 then d:_ensure(2+f)d:writeU16(f)buffer.
-writestring(d._buf,d._offset,e)d._offset+=f else d:writeU16(0)end end function c
-.writeVector3(d,e)d:writeF32(e.X)d:writeF32(e.Y)d:writeF32(e.Z)end function c.
-toBuffer(d)local e=buffer.create(d._offset)buffer.copy(e,0,d._buf,0,d._offset)
-return e end function c.toString(d)return buffer.tostring(d:toBuffer())end
-return c end function a.h()local b=a.cache.h if not b then b={c=__modImpl()}a.
-cache.h=b end return b.c end end do local function __modImpl()local b={}b.
-__index=b function b.new(c)return setmetatable({_buf=c,_offset=0,_size=buffer.
-len(c)},b)end function b.reset(c)c._offset=0 buffer.fill(c._buf,0,0,c._size)end
-function b.seek(c,d)c._offset=d end function b.getOffset(c)return c._offset end
-function b._ensure(c,d)if c._offset+d>c._size then error(`Buffer out of bounds! Size: {
-c._size}, offset: {c._offset} and ensure {d} bytes`)end end function b.readU8(c)
-c:_ensure(1)local d=buffer.readu8(c._buf,c._offset)c._offset+=1 return d end
-function b.readBool(c)local d=c:readU8()return d==1 and true or false end
-function b.readU16(c)c:_ensure(2)local d=buffer.readu16(c._buf,c._offset)c.
-_offset+=2 return d end function b.readU32(c)c:_ensure(4)local d=buffer.readu32(
-c._buf,c._offset)c._offset+=4 return d end function b.readF32(c)c:_ensure(4)
-local d=buffer.readf32(c._buf,c._offset)c._offset+=4 return d end function b.
-readShortString(c)c:_ensure(2)local d=c:readU16()if d==0 then return''end c:
-_ensure(d)local e=buffer.readstring(c._buf,c._offset,d)c._offset+=d return e end
-function b.readVector3(c)local d=c:readF32()local e=c:readF32()local f=c:
-readF32()return Vector3.new(d,e,f)end function b.toBuffer(c)local d=buffer.
-create(c._offset)buffer.copy(d,0,c._buf,0,c._offset)return d end function b.
-toString(c)return buffer.tostring(c:toBuffer())end return b end function a.i()
+getnamecallmethod()=='Shutdown'then n=true return...else if o then return o(...)
+end end end)game:Shutdown()hookmetamethod(game,'__namecall',o)j=n end return g
+end function a.g()local b=a.cache.g if not b then b={c=__modImpl()}a.cache.g=b
+end return b.c end end do local function __modImpl()local b=8192 local c={}c.
+__index=c function c.new(d)local e=d or b return setmetatable({_buf=buffer.
+create(e),_offset=0,_size=e},c)end function c.reset(d)d._offset=0 buffer.fill(d.
+_buf,0,0,d._size)end function c.seek(d,e)d._offset=e end function c.getOffset(d)
+return d._offset end function c._ensure(d,e)if d._offset+e>d._size then local f=
+d._size*2 while d._offset+e>f do f*=2 end local g=buffer.create(f)buffer.copy(g,
+0,d._buf,0,d._offset)d._buf=g d._size=f end end function c.writeU8(d,e)d:
+_ensure(1)buffer.writeu8(d._buf,d._offset,e)d._offset+=1 end function c.
+writeBool(d,e)d:_ensure(1)d:writeU8(e and 1 or 0)end function c.writeU16(d,e)d:
+_ensure(2)buffer.writeu16(d._buf,d._offset,e)d._offset+=2 end function c.
+writeU32(d,e)d:_ensure(4)buffer.writeu32(d._buf,d._offset,e)d._offset+=4 end
+function c.writeF32(d,e)d:_ensure(4)buffer.writef32(d._buf,d._offset,e)d._offset
++=4 end function c.writeShortString(d,e)local f=string.len(e)if f>0 then d:
+_ensure(2+f)d:writeU16(f)buffer.writestring(d._buf,d._offset,e)d._offset+=f else
+d:writeU16(0)end end function c.writeVector3(d,e)d:writeF32(e.X)d:writeF32(e.Y)d
+:writeF32(e.Z)end function c.toBuffer(d)local e=buffer.create(d._offset)buffer.
+copy(e,0,d._buf,0,d._offset)return e end function c.toString(d)return buffer.
+tostring(d:toBuffer())end return c end function a.h()local b=a.cache.h if not b
+then b={c=__modImpl()}a.cache.h=b end return b.c end end do local function
+__modImpl()local b={}b.__index=b function b.new(c)return setmetatable({_buf=c,
+_offset=0,_size=buffer.len(c)},b)end function b.reset(c)c._offset=0 buffer.fill(
+c._buf,0,0,c._size)end function b.seek(c,d)c._offset=d end function b.getOffset(
+c)return c._offset end function b._ensure(c,d)if c._offset+d>c._size then error(
+`Buffer out of bounds! Size: {c._size}, offset: {c._offset} and ensure {d} bytes`
+)end end function b.readU8(c)c:_ensure(1)local d=buffer.readu8(c._buf,c._offset)
+c._offset+=1 return d end function b.readBool(c)local d=c:readU8()return d==1
+and true or false end function b.readU16(c)c:_ensure(2)local d=buffer.readu16(c.
+_buf,c._offset)c._offset+=2 return d end function b.readU32(c)c:_ensure(4)local
+d=buffer.readu32(c._buf,c._offset)c._offset+=4 return d end function b.readF32(c
+)c:_ensure(4)local d=buffer.readf32(c._buf,c._offset)c._offset+=4 return d end
+function b.readShortString(c)c:_ensure(2)local d=c:readU16()if d==0 then return
+''end c:_ensure(d)local e=buffer.readstring(c._buf,c._offset,d)c._offset+=d
+return e end function b.readVector3(c)local d=c:readF32()local e=c:readF32()
+local f=c:readF32()return Vector3.new(d,e,f)end function b.toBuffer(c)local d=
+buffer.create(c._offset)buffer.copy(d,0,c._buf,0,c._offset)return d end function
+b.toString(c)return buffer.tostring(c:toBuffer())end return b end function a.i()
 local b=a.cache.i if not b then b={c=__modImpl()}a.cache.i=b end return b.c end
 end do local function __modImpl()local b=2 local c=1835299959 local d=a.i()local
 e={}function e.decodeMeta(f)local g=f:readU32()local h=f:readU16()local i=f:
@@ -383,8 +383,7 @@ t<0.5 and t<p then p=t o=r end end end if o then task.defer(function()local q=
 getCash()if not q then return end if not n then if type(o:GetAttribute(l))==
 'number'then task.wait((o:GetAttribute(l)))else warn(`[MultiAbilityAndFieldUpgrade] Found unit without ability time!`
 )end else local r=(o:GetAttribute(m))local s=parsePrice(r)if not s then error(`[MultiAbilityAndFieldUpgrade] Couldn't parse '{
-r}' for {o.Name}`)end while q.Value<s do q.Changed:Wait()end end f:FireServer(o,
-l,m)end)else warn(`[MultiAbilityAndFieldUpgrade] Couldn't find closest unit to use ability!`
+r}' for {o.Name}`)end end f:FireServer(o,l,m)end)else warn(`[MultiAbilityAndFieldUpgrade] Couldn't find closest unit to use ability!`
 )end end}return j end function a.s()local b=a.cache.s if not b then b={c=
 __modImpl()}a.cache.s=b end return b.c end end do local function __modImpl()
 local b=a.l()local c=a.n()local d=a.o()local e=a.p()local f=a.q()local g=a.r()
@@ -463,8 +462,8 @@ processFireServer(A,B)for C,D in g do if D.matchName(A)and D.matchArgs(B)then x
 end end local function installHook()if not z then z=true local A=
 getrawmetatable(game)if A then v=hookfunction(A.__namecall,function(B,...)if u
 then local C=getnamecallmethod()if C=='FireServer'then local D={...}task.spawn(
-function()setthreadidentity(8)processFireServer(B.Name,D)end)end end return(v)(B
-,...)end)end end end local function removeHook()end function t.record()if u then
+function()setthreadidentity(8)processFireServer(B.Name,D)end)end end return v(B,
+...)end)end end end local function removeHook()end function t.record()if u then
 return b.error'Already recording'end w:reset()x=0 w:writeU32(1835299959)w:
 writeU16(2)w:writeU16(0)w:writeShortString(l[1])w:writeShortString((k:
 GetAttribute'Accessory'))w:writeU32(o.Value)w:writeU32(p.Value)w:writeU32(q.
@@ -507,10 +506,10 @@ ToggleKeybind=Enum.KeyCode.RightShift end function m.startSurvival()assert(not n
 [[You double called `Interface.start*`. Which obviously should not ever happen.]]
 )n=true d.enableInterface()local o=a.c()o.UI_setThrowNotify(function(p,q,r)l:
 Notify{Title=p,Description=q,Time=r}end)local p=l.Options local q=l.Toggles
-local r=l:CreateWindow{Title='WTDm',Footer='version: 1.0',Icon='',NotifySide=
-'Right',Center=true,ShowCustomCursor=false}local s=r:AddTab('Main','user')do
-local t=s:AddLeftGroupbox('Bypasses','boxes')do t:AddToggle('ToggleNoInspect',{
-Text='Bypass no inspect',Tooltip=
+local r=l:CreateWindow{Title='WTDm',Footer='version: 1.0',Icon=95816097006870,
+NotifySide='Right',Center=true,ShowCustomCursor=false}local s=r:AddTab('Main',
+'user')do local t=s:AddLeftGroupbox('Bypasses','boxes')do t:AddToggle(
+'ToggleNoInspect',{Text='Bypass no inspect',Tooltip=
 [[Allows you to see and inspect units info when you normally cannot.
 (for an example, using a Knowledge Crystal)]]
 ,DisabledTooltip="This executor doesn't support this feature.",Disabled=false,
@@ -585,11 +584,11 @@ B or'unknown reason'}`)end end end)end end Interface_settingsTab(r)end function
 m.startLobby()assert(not n,
 [[You double called `Interface.start*`. Which obviously should not ever happen.]]
 )n=true d.enableInterface()local o=a.a()local p=l.Options local q=l:CreateWindow
-{Title='another wtd script',Footer='version: 1.0',Icon='',NotifySide='Right',
-Center=true,ShowCustomCursor=false}local r=q:AddTab('Main','user')do local s=r:
-AddLeftGroupbox('Badges','award')do local t=s:AddLabel'Loading Badges info..'
-task.defer(function()local u u=s:AddButton{Text="Get 'Long Way Home' badge",
-Tooltip=
+{Title='another wtd script',Footer='version: 1.0',Icon=95816097006870,NotifySide
+='Right',Center=true,ShowCustomCursor=false}local r=q:AddTab('Main','user')do
+local s=r:AddLeftGroupbox('Badges','award')do local t=s:AddLabel
+'Loading Badges info..'task.defer(function()local u u=s:AddButton{Text=
+"Get 'Long Way Home' badge",Tooltip=
 [[Giving you a free badge.
 You can collect 10k credz, 2 trophies and 25 tokens
 in the badges section.]]
